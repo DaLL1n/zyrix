@@ -1,0 +1,51 @@
+// TYPOGRAPHY
+
+// FontWeight
+$regular: 400;
+$medium: 500;
+$semi-bold: 600;
+$bold: 700;
+$header-weight: $medium;
+
+// Font-Size
+$fs-10: 10px;
+$fs-12: 12px;
+$fs-14: 14px;
+$fs-16: 16px;
+$fs-18: 18px;
+$fs-20: 20px;
+$fs-24: 24px;
+$fs-28: 28px;
+$fs-32: 32px;
+$fs-36: 36px;
+$fs-40: 40px;
+$fs-44: 44px;
+$fs-54: 54px;
+$fs-60: 60px;
+
+// Headline
+$h1: $fs-60;
+$h2: $fs-44;
+$h3: $fs-40;
+$h4: $fs-32;
+$h5: $fs-24;
+$h6: $fs-20;
+
+// Button
+$btn-m1: $fs-18;
+$btn-m2: $fs-16;
+$btn-m3: $fs-14;
+$btn-m4: $fs-12;
+$btn-m5: $fs-10;
+
+// Base
+$base-1: $fs-20;
+$base-2: $fs-18;
+$base-3: $fs-16;
+$base-4: $fs-14;
+$base-5: $fs-12;
+
+// Caption
+$caption-1: $fs-14;
+$caption-2: $fs-12;
+$caption-3: $fs-10;
