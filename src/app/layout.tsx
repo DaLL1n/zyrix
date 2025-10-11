@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Poppins } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import './globals.scss';
+import Header from '@/widgets/Header/Header';
 
 const poppins = Poppins({
   variable: '--font-poppins',
@@ -21,7 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable}`}>{children}</body>
+      <body className={`${poppins.variable}`}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

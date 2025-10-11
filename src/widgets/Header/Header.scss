@@ -1,0 +1,68 @@
+@use '../../shared/index.scss' as *;
+
+.header {
+  &__wrapper {
+    padding: 23px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__main-navigation {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  &__logo-link {
+    display: flex;
+    align-items: center;
+    width: 114px;
+    height: 48px;
+  }
+
+  &__service-navigation {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  &__search-btn,
+  &__language-change-btn,
+  &__wallet-link,
+  &__notification-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    > svg {
+      transition: color 0.3s ease-in-out;
+    }
+
+    &:hover {
+      > svg {
+        color: $primary;
+      }
+    }
+  }
+
+  &__notification-link {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      top: 3;
+      right: 2;
+      background-color: $error;
+      border-radius: 50%;
+    }
+  }
+}
