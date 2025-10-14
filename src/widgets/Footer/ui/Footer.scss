@@ -1,0 +1,71 @@
+@use '../../../shared/index.scss' as *;
+
+.footer {
+  &__wrapper {
+    padding-top: 25px;
+    width: 100%;
+    max-width: 1095px;
+    margin: 0 auto 24px;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    margin: 0 0 34px;
+
+    &-line {
+      width: 100%;
+      max-width: 640px;
+      background-color: #7f7f7f;
+      height: 1px;
+    }
+  }
+
+  .nav-menu {
+    display: flex;
+    justify-content: center;
+    gap: 72px;
+
+    &__list {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &__link {
+      color: $primary-TX;
+      font-size: $fs-16;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+
+  &__copyright-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 24px;
+    position: relative;
+
+    &::after {
+      content: '';
+      width: 100%;
+      max-width: 1224px;
+      height: 1px;
+      background-color: $dividers;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__copyright-text {
+    font-weight: $medium;
+    font-size: $fs-14;
+    line-height: 100%;
+    align-items: center;
+  }
+}

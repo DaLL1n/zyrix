@@ -1,0 +1,51 @@
+.hero {
+    min-height: calc(100vh - 106px);
+    
+
+  &__wrapper {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    
+  }
+
+  &__earth-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    
+    
+
+    // &:hover {
+    //   .hero__earth-big {
+    //     transform: rotateY(-360deg);
+    //   }
+    // }
+  }
+
+  &__earth-big {
+    position: absolute;
+    top: -28px;
+    left: 10;
+    transition: transform 10s ease-in-out;
+    animation: big-earth 30s linear infinite;
+  }
+
+  &__earth-medium {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: big-earth 30s linear infinite;
+    transform: rotate(-48deg);
+  }
+
+  &__earth-small {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: big-earth 30s linear infinite;
+  }
+}
+
+

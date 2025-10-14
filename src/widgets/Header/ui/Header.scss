@@ -1,0 +1,115 @@
+@use '../../../shared/index.scss' as *;
+
+.header {
+  &__wrapper {
+    padding: 28px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__main-navigation {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+
+    .nav-menu {
+      &__list {
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+      }
+
+      &__item {
+        padding: 10px;
+      }
+
+      &__link {
+        font-size: $fs-18;
+        color: $sec-TX;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  &__action-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &--notification {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        top: 3;
+        right: 2;
+        background-color: $error;
+        border-radius: 50%;
+      }
+    }
+
+    > svg {
+      transition: color 0.3s ease-in-out;
+    }
+
+    &:hover {
+      > svg {
+        color: $primary;
+      }
+    }
+  }
+
+  &__auth {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      text-align: center;
+      min-width: 117px;
+      min-height: 48px;
+      border-radius: 32px;
+      font-size: $fs-14;
+      line-height: 100%;
+      font-weight: $medium;
+      padding: 13.5px 32px;
+
+      &--primary {
+        background-color: $primary;
+        color: $primary-BC;
+      }
+
+      &--secondary {
+        border: 1px solid $sec-TX;
+      }
+    }
+  }
+}

@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.scss';
-import Header from '@/widgets/Header/Header';
+import { Header } from '@/widgets/Header';
+import { Footer } from '@/widgets/Footer';
+import QueryProvider from './providers/QueryProvider';
 
 const poppins = Poppins({
   variable: '--font-poppins',
@@ -23,8 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable}`}>
-        <Header />
-        {children}
+        <QueryProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </QueryProvider>
       </body>
     </html>
   );

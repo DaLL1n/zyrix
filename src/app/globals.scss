@@ -44,7 +44,11 @@ textarea {
 
 .container {
   width: 100%;
-  max-width: 1264px;
-  padding: 0 20px;
+  max-width: 1440px;
+  padding: 0 24px;
   margin: 0 auto;
+}
+
+.select-word {
+  color: $primary;
 }

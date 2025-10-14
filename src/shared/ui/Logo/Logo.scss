@@ -1,0 +1,19 @@
+.logo-link {
+  display: flex;
+  align-items: center;
+
+  &--header {
+    width: 114px;
+    height: 48px;
+  }
+
+  &--footer {
+    width: 140px;
+    height: 51px;
+  }
+
+  &--auth {
+    width: 132px;
+    height: 60px;
+  }
+}
