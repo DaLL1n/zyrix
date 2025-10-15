@@ -15,6 +15,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: 'Zyrix',
   description: 'Zyrix',
+  
 };
 
 export default function RootLayout({
