@@ -1,6 +1,8 @@
 @use '../../../shared/index.scss' as *;
 
 .header {
+  background-color: $primary-BC;
+
   &__wrapper {
     padding: 28px 32px;
     display: flex;

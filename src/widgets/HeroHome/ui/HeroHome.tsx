@@ -6,7 +6,7 @@ import './HeroHome.scss';
 const HeroHome = () => {
   return (
     <section className="hero">
-      <div className="container">
+      <div className="container container--narrow">
         <div className="hero__wrapper">
           <div className="hero__content">
             <h1 className="hero__title">
@@ -33,8 +33,8 @@ const HeroHome = () => {
             <Icon
               className="hero__earth-medium"
               iconId="hero-earth-medium"
-              width={465}
-              height={535}
+              width={542}
+              height={472}
             />
             <Icon
               className="hero__earth-small"

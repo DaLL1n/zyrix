@@ -1,0 +1,78 @@
+@use '../../../shared/index.scss' as *;
+
+.key-metrics {
+  padding-top: 7px;
+  animation: fade-in linear;
+  animation-timeline: view();
+
+  &__wrapper {
+    width: 100%;
+    margin: 0 auto;
+    background-color: $bg-card;
+    border-radius: 32px;
+    padding: 8px 32px;
+    position: relative;
+
+    &::after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      background-color: inherit;
+      border-radius: 32px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      filter: blur(11px);
+      z-index: -1;
+    }
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    column-gap: 67.67px;
+    justify-content: space-between;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: fit-content;
+
+    &:not(:first-child) {
+      border-left: 1px solid $dividers;
+      padding-left: 102px;
+    }
+  }
+
+  &__value {
+    font-weight: $medium;
+    font-size: $fs-40;
+    line-height: 150%;
+    color: $title;
+    text-align: center;
+  }
+
+  &__label {
+    text-align: center;
+    font-size: $fs-16;
+    line-height: 150%;
+    color: $sec-TX;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0.2;
+  }
+  25% {
+    opacity: 1;
+  }
+}

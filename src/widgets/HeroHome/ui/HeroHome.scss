@@ -1,11 +1,9 @@
 @use '../../../shared/index.scss' as *;
 
 .hero {
-  min-height: calc(100vh - 106px);
-
+  overflow: hidden;
   &__wrapper {
     justify-content: center;
-    padding-left: 81px;
     display: grid;
     grid-template-columns: minmax(auto, 672px) minmax(auto, 683px);
     grid-template-rows: 706px;
@@ -94,8 +92,8 @@
     position: absolute;
     height: 706px;
     width: 727px;
-    top: 28px;
-    right: -3%;
+    top: 0;
+    right: -11%;
 
     &::after {
       content: '';
@@ -124,14 +122,14 @@
 
   &__earth-big {
     position: absolute;
-    left: 6%;
+    left: 5%;
     top: -4%;
     opacity: 0.7;
   }
 
   &__earth-medium {
     position: absolute;
-    left: 50%;
+    left: 55%;
     top: 10%;
     transform: translateX(-50%);
     opacity: 0.7;
@@ -139,7 +137,7 @@
 
   &__earth-small {
     position: absolute;
-    left: 34%;
+    left: 33%;
     bottom: 20%;
     opacity: 0.7;
   }
