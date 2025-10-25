@@ -1,0 +1,167 @@
+@use '../../../shared/index.scss' as *;
+
+.features-overview {
+  $root: &;
+
+  &__title,
+  &__card-title {
+    font-weight: $medium;
+    font-size: $fs-32;
+    line-height: 100%;
+    margin: 0 0 40px;
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 390px));
+    gap: 25px;
+    justify-content: center;
+  }
+
+  &__item--horisontal {
+    grid-column: span 3;
+
+    #{$root}__card-graphic {
+      min-height: 426px;
+      padding-right: 56px;
+      display: flex;
+      gap: 29px;
+      align-items: center;
+    }
+
+    #{$root}__card-content {
+      max-width: 331px;
+      width: 100%;
+      padding: 0;
+    }
+
+    #{$root}__card-title {
+      font-size: $fs-24;
+    }
+
+    #{$root}__card-description {
+      color: $primary-TX;
+      max-width: 284px;
+    }
+  }
+
+  &__card-graphic {
+    padding: 32px 32px 28px;
+    border-radius: 32px;
+    background-color: $bg-card;
+    min-height: 500px;
+    height: 100%;
+    overflow: hidden;
+
+    &--oval {
+      position: relative;
+
+      &::after,
+      &::before {
+        content: '';
+        width: 336px;
+        height: 336px;
+        border-radius: 50%;
+
+        position: absolute;
+        top: 50px;
+        opacity: 0.3;
+        filter: blur(1px);
+      }
+
+      &::before {
+        border-right: 1.5px solid rgba(255, 255, 255, 0.5);
+        left: -170px;
+        background: conic-gradient(
+          from 90deg at 50% 50%,
+          rgba(255, 255, 255, 0.15) -0.09deg,
+          rgba(255, 255, 255, 0) 60.83deg,
+          rgba(255, 255, 255, 0) 289.83deg,
+          rgba(255, 255, 255, 0.15) 359.91deg,
+          rgba(255, 255, 255, 0) 420.83deg
+        );
+      }
+
+      &::after {
+        border-left: 1.5px solid rgba(255, 255, 255, 0.5);
+        right: -170px;
+        background: conic-gradient(
+          from -90deg at 50% 50%,
+          rgba(255, 255, 255, 0.15) -0.09deg,
+          rgba(255, 255, 255, 0) 60.83deg,
+          rgba(255, 255, 255, 0) 289.83deg,
+          rgba(255, 255, 255, 0.15) 359.91deg,
+          rgba(255, 255, 255, 0) 420.83deg
+        );
+      }
+    }
+  }
+
+  &__card-icon {
+    width: 100%;
+    height: 344px;
+    margin: 0 0 16px;
+  }
+
+  &__card-content {
+    padding: 0 16px;
+  }
+
+  &__card-title {
+    font-size: $fs-20;
+    margin: 0 0 8px;
+  }
+
+  &__card-description {
+    font-size: $fs-14;
+    line-height: 150%;
+    color: rgba(248, 248, 248, 0.7);
+  }
+
+  &__coin-showcase {
+    padding: 44px 0 44px 54px;
+
+    &-inner {
+      display: flex;
+      gap: 28px 32px;
+      flex-direction: column;
+      padding: 0 11.5px;
+    }
+  }
+
+  &__coin-list-top,
+  &__coin-list-bottom {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 108px 116px 121px 116px 108px;
+    gap: 32px;
+    align-items: center;
+
+    li {
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 3.88px 7.75px 31.01px 0px rgba(248, 248, 248, 0.06) inset;
+
+      aspect-ratio: 1/1;
+
+      &:nth-child(4n + 1) {
+        border: 2.72px solid rgba(248, 248, 248, 0.1);
+      }
+
+      &:nth-child(2n + 2) {
+        border: 2.91px solid rgba(248, 248, 248, 0.2);
+      }
+
+      &:nth-child(2n + 3) {
+        border: 3.03px solid rgba(248, 248, 248, 0.2);
+      }
+    }
+  }
+}

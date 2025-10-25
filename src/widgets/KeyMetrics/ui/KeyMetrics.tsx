@@ -11,20 +11,28 @@ const KeyMetrics = () => {
         <div className="key-metrics__wrapper">
           <ul className="key-metrics__list">
             <li className="key-metrics__item">
-              <span className="key-metrics__value">150</span>
-              <span className="key-metrics__label">Countries Covered</span>
+              <div className="key-metrics__content-wrapper">
+                <span className="key-metrics__value">150</span>
+                <span className="key-metrics__label">Countries Covered</span>
+              </div>
             </li>
             <li className="key-metrics__item">
-              <span className="key-metrics__value">30M</span>
-              <span className="key-metrics__label">Global Investors</span>
+              <div className="key-metrics__content-wrapper">
+                <span className="key-metrics__value">30M</span>
+                <span className="key-metrics__label">Global Investors</span>
+              </div>
             </li>
             <li className="key-metrics__item">
-              <span className="key-metrics__value">700+</span>
-              <span className="key-metrics__label">Coins</span>
+              <div className="key-metrics__content-wrapper">
+                <span className="key-metrics__value">700+</span>
+                <span className="key-metrics__label">Coins</span>
+              </div>
             </li>
             <li className="key-metrics__item">
-              <span className="key-metrics__value">$1.54B</span>
-              <span className="key-metrics__label">24h Trading Volume</span>
+              <div className="key-metrics__content-wrapper">
+                <span className="key-metrics__value">$1.54B</span>
+                <span className="key-metrics__label">24h Trading Volume</span>
+              </div>
             </li>
           </ul>
         </div>
