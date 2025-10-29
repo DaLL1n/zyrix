@@ -1,5 +1,5 @@
-@forward '../shared/styles/normalize';
-@use '../shared/index.scss' as *;
+@forward './normalize';
+@use '../../shared/index.scss' as *;
 
 *,
 *::after,
@@ -9,15 +9,13 @@
   padding: 0;
 }
 
-
-
 body {
   font-family: var(--font-poppins);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   font-weight: $regular;
-  font-size: $fs-20;
+  font-size: $base-1;
   margin: 0;
   padding: 0;
   background-color: $primary-BC;
@@ -60,7 +58,7 @@ textarea {
 .container {
   width: 100%;
   max-width: 1440px;
-  padding: 0 24px;
+  padding: 0 $padding-3;
   margin: 0 auto;
 
   &--narrow {

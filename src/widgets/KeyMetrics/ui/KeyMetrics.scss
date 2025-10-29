@@ -1,7 +1,7 @@
 @use '../../../shared/index.scss' as *;
 
 .key-metrics {
-  padding-top: 7px;
+  padding-top: $space-1;
   animation: fade-in linear;
   animation-timeline: view();
   margin: 0 0 107px;
@@ -10,8 +10,8 @@
     width: 100%;
     margin: 0 auto;
     background-color: $bg-card;
-    border-radius: 32px;
-    padding: 8px 24px 8px 32px;
+    border-radius: $radius-4;
+    padding: $padding-1 $padding-3 $padding-1 $padding-4;
     position: relative;
 
     &::after {
@@ -37,14 +37,14 @@
     column-gap: 68px;
 
     @media (max-width: 1024px) {
-     gap: 35px;
+      gap: 35px;
     }
   }
 
   &__item {
     display: flex;
     flex-direction: column;
-    padding: 8px;
+    padding: $padding-1;
     justify-content: flex-end;
     width: 100%;
 
@@ -68,12 +68,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: $space-1;
     max-width: 161px;
     width: 100%;
     flex-grow: 1;
-
-    
   }
 
   &__value {

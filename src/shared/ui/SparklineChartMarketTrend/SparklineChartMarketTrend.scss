@@ -1,0 +1,14 @@
+.responsive-container {
+  user-select: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+
+  svg {
+    user-select: none;
+    outline: none;
+
+    .recharts-dot {
+      display: none;
+    }
+  }
+}
