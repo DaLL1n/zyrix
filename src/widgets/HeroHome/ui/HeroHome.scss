@@ -19,7 +19,7 @@
   }
 
   &__title {
-    margin: 0 0 16px;
+    margin: 0 0 $space-2;
     font-size: $fs-54;
     font-weight: $semi-bold;
     line-height: 80px;
@@ -27,7 +27,7 @@
 
   &__advantages {
     color: $sec-TX;
-    gap: 16px;
+    gap: $space-2;
     margin: 0 0 67px;
     font-size: $fs-24;
     font-weight: $medium;
@@ -44,7 +44,7 @@
         rgba(255, 255, 255, 0) 53.57%,
         rgba(255, 255, 255, 0.2) 100%
       );
-    border-radius: 32px;
+    border-radius: $radius-4;
     font-weight: $medium;
     font-size: $fs-18;
     line-height: 100%;

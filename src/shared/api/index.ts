@@ -1,0 +1,1 @@
+export { GetCoins } from './fetchCoins';

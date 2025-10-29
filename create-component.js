@@ -131,7 +131,8 @@ try {
 // 2. Файл стилей (.scss)
 const styleFileName = `${componentName}.scss`;
 const styleFilePath = path.join(uiDir, styleFileName);
-const styleContent = `.${componentName.toLocaleLowerCase()}`;
+const styleContent = `.${componentName.toLocaleLowerCase()} {
+}`;
 try {
   fs.writeFileSync(styleFilePath, styleContent);
   console.log(

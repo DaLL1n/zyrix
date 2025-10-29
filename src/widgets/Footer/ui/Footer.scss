@@ -5,14 +5,14 @@
     padding-top: 25px;
     width: 100%;
     max-width: 1095px;
-    margin: 0 auto 24px;
+    margin: 0 auto $space-3;
   }
 
   &__top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 32px;
+    gap: $space-4;
     margin: 0 0 34px;
 
     &-line {
@@ -30,7 +30,7 @@
 
     &__list {
       flex-direction: column;
-      gap: 16px;
+      gap: $space-2;
     }
 
     &__link {
@@ -46,7 +46,7 @@
   &__copyright-wrapper {
     display: flex;
     justify-content: center;
-    padding: 20px 0 24px;
+    padding: 20px 0 $padding-3;
     position: relative;
 
     &::after {

@@ -4,7 +4,7 @@
   background-color: $primary-BC;
 
   &__wrapper {
-    padding: 28px 32px;
+    padding: 28px $space-4;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,14 +12,14 @@
 
   &__main-navigation {
     display: flex;
-    gap: 32px;
+    gap: $space-4;
     align-items: center;
 
     .nav-menu {
       &__list {
         align-items: center;
         justify-content: center;
-        gap: 32px;
+        gap: $space-4;
       }
 
       &__item {
@@ -40,13 +40,13 @@
   &__controls {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: $space-3;
   }
 
   &__actions {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: $space-4;
   }
 
   &__action-button {
@@ -88,7 +88,7 @@
   &__auth {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: $space-2;
 
     &-link {
       display: flex;
@@ -98,11 +98,11 @@
       text-align: center;
       min-width: 117px;
       min-height: 48px;
-      border-radius: 32px;
+      border-radius: $radius-4;
       font-size: $fs-14;
       line-height: 100%;
       font-weight: $medium;
-      padding: 13.5px 32px;
+      padding: 13.5px $padding-4;
 
       &--primary {
         background-color: $primary;
