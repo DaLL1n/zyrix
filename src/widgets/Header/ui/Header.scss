@@ -76,6 +76,7 @@
 
     > svg {
       transition: color 0.3s ease-in-out;
+      color: $title;
     }
 
     &:hover {
@@ -103,6 +104,7 @@
       line-height: 100%;
       font-weight: $medium;
       padding: 13.5px $padding-4;
+      color: $title;
 
       &--primary {
         background-color: $primary;

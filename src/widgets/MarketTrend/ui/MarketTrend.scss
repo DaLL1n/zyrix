@@ -1,22 +1,140 @@
+@use '../../../shared/index.scss' as *;
+
 .market-trend {
+  $root: &;
+
   &__cell {
+    font-size: $fs-16;
+    font-weight: $medium;
+    padding: 8px 0 8px 53.4px;
+
     &--coin-rating {
+      font-weight: $semi-bold;
+      color: $sec-TX;
+      padding-left: 56px;
     }
+
     &--coin-name {
+      div {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        gap: 4px;
+      }
+
+      #{$root}__coin-icon {
+        margin: 0 4px 0 0;
+        width: 32px;
+        height: 32px;
+      }
+
+      #{$root}__coin-name {
+        color: #ffffff;
+      }
+
+      #{$root}__coin-symbol {
+        color: $sec-TX;
+        font-size: $fs-10;
+        font-weight: $regular;
+      }
     }
     &--coin-price {
+      font-weight: $regular;
+      color: #ffffff;
     }
-    &--coin-changes {
-    }
+
     &--chart {
+      padding-left: 0;
     }
+
     &--link-trade {
+      a {
+        &::after {
+          content: '';
+          width: 100%;
+          height: 48px;
+          position: absolute;
+          left: 0;
+          top: 8px;
+          background-color: $primary-BC;
+          border-radius: $radius-4;
+          z-index: -1;
+          opacity: 0;
+          transition: opacity 0.3s ease-in-out;
+        }
+
+        &::before {
+          content: '';
+          width: 100%;
+          height: 48px;
+          position: absolute;
+          left: 0;
+          top: 8px;
+          border-radius: $radius-4;
+        }
+      }
     }
   }
+
   &__coin-info {
+    position: relative;
+    isolation: isolate;
+
+    &:hover {
+      #{$root}__cell--link-trade {
+        a {
+          &::after {
+            opacity: 1;
+          }
+        }
+      }
+    }
   }
+
   &__table {
+    width: 100%;
+    min-height: 496px;
+    background-color: $bg-card;
+    padding: $padding-4;
+    border-radius: $radius-4;
+    table-layout: initial;
+    border-collapse: separate;
   }
+
   &__table-header {
+    border-bottom: 1px solid $dividers;
+    padding-bottom: $padding-2;
+    text-align: left;
+    font-weight: $semi-bold;
+    font-size: $fs-16;
+    color: $sec-TX;
+    width: 155px;
+    padding-left: 50px;
+
+    &:first-child {
+      width: 68px;
+      padding-left: 56px;
+      border-spacing: 50;
+      font-size: $fs-14;
+      font-weight: $regular;
+    }
+
+    &--chart {
+      text-align: center;
+      padding-left: 0;
+    }
+  }
+
+  &__title {
+    font-weight: $medium;
+    font-size: $h4;
+    margin: 0 0 $space-4;
+  }
+
+  &__loader {
+    position: relative;
   }
 }
