@@ -4,18 +4,19 @@ import clsx from 'clsx/lite';
 
 interface CoinIconProps extends React.SVGAttributes<SVGElement> {
   variant: 'base' | 'colored' | 'white';
-  size?: 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
+  size: 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
   coinName: string;
 }
 
-const CoinIcon = ({ coinName, variant, size, ...props }: CoinIconProps) => {
+const CoinIcon = ({
+  coinName,
+  variant,
+  size = 'medium',
+  ...props
+}: CoinIconProps) => {
   return (
     <svg
-      className={clsx(
-        styles['coin-icon'],
-        styles[variant],
-        size && styles[size],
-      )}
+      className={clsx(styles[size], props.className)}
       aria-hidden="true"
       {...props}
     >

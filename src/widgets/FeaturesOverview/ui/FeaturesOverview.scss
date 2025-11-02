@@ -27,10 +27,10 @@
 
     #{$root}__card-graphic {
       min-height: 426px;
-      padding-right: 56px;
       display: flex;
       gap: 29px;
       align-items: center;
+      justify-content: space-between;
     }
 
     #{$root}__card-content {
@@ -40,7 +40,7 @@
     }
 
     #{$root}__card-title {
-      font-size: $fs-24;
+      font-size: $h5;
     }
 
     #{$root}__card-description {
@@ -123,7 +123,6 @@
   }
 
   &__coin-showcase {
-    padding: 44px 0 44px 54px;
     position: relative;
 
     &::after {

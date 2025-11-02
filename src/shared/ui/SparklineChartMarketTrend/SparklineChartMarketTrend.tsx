@@ -13,7 +13,7 @@ interface SparklineChartMarketTrendProps {
 const SparklineChartMarketTrend = ({
   data,
   color,
-  height = 53,
+  height = 48,
 }: SparklineChartMarketTrendProps) => {
   const chartData = data.map((price, index) => ({
     price: price,
