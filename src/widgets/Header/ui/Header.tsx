@@ -3,6 +3,7 @@ import './Header.scss';
 import { Icon, Logo, NavMenu } from '@/shared/ui';
 import Link from 'next/link';
 import { navItems } from '../model/navItems';
+import { CoinSearchModal } from '@/features/coin-search';
 
 const Header = () => {
   return (
@@ -21,6 +22,7 @@ const Header = () => {
               <button className="header__action-button" type="button">
                 <Icon iconId="earth" width={24} height={24} />
               </button>
+              <CoinSearchModal />
             </div>
             <div className="header__auth">
               <Link

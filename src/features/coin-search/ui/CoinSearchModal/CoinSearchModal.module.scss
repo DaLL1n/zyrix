@@ -1,0 +1,20 @@
+@use '../../../../shared/index.scss' as *;
+
+.modal-search {
+  position: absolute;
+  top: 35px;
+  right: 70%;
+  width: 426px;
+  background-color: $bg-card;
+  padding: $padding-4 $padding-4 50px;
+  z-index: 100;
+  border-radius: $radius-4;
+
+  > div {
+    margin: 0 0 $space-3;
+  }
+
+  &__subtitle {
+    margin-bottom: $space-2;
+  }
+}
