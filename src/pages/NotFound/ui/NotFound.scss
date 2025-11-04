@@ -1,0 +1,187 @@
+@use '../../../shared/index.scss' as *;
+
+.notfound {
+  background-image: url('/images/notfound-bg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: calc(100vh - 104px);
+
+  &__wrapper {
+    background: -o-radial-gradient(
+      50% 50%,
+      50% 50%,
+      rgba(12, 12, 12, 0.01) 0%,
+      #141414 100%
+    );
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(12, 12, 12, 0.01) 0%,
+      #141414 100%
+    );
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  &__inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    max-width: 1173px;
+    max-height: 374px;
+    position: relative;
+    margin: 0 0 80px;
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      border-radius: 200px;
+    }
+
+    &::before {
+      max-width: 663px;
+      max-height: 323px;
+      background: rgba(0, 0, 0, 0.1);
+      border: 1px solid #999999;
+    }
+
+    &::after {
+      max-width: 691px;
+      max-height: 353px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  &__arc-right,
+  &__arc-left {
+    bottom: 2px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    max-width: 438px;
+    max-height: 374px;
+
+    @media (max-width: 1024px) {
+      width: 285px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+
+  &__arc-right {
+    right: 0;
+  }
+
+  &__arc-left {
+    left: 0;
+  }
+
+  &__title,
+  &__description {
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(-22.18%, #cccccc),
+      to(#666666)
+    );
+    background: -o-linear-gradient(top, #cccccc -22.18%, #666666 100%);
+    background: linear-gradient(180deg, #cccccc -22.18%, #666666 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: #cccccc;
+  }
+
+  &__title {
+    z-index: 11;
+    font-weight: 400;
+    font-size: 140px;
+    letter-spacing: -0.035em;
+    line-height: 120%;
+    text-align: center;
+    margin: 0;
+  }
+
+  &__description {
+    font-weight: 500;
+    font-size: 32px;
+    text-align: center;
+    color: #999999;
+    margin: 0 0 24px;
+  }
+
+  &__link {
+    color: #141414;
+    background-color: #ffc107;
+    text-align: center;
+    border-radius: 32px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    min-width: 117px;
+    min-height: 48px;
+    padding: 13.5px 32px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 16px;
+    -webkit-transition: -webkit-box-shadow 0.3s ease-in-out;
+    transition: -webkit-box-shadow 0.3s ease-in-out;
+    -o-transition: box-shadow 0.3s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      -webkit-box-shadow: inset 0px 20px 25px 25px rgb(255, 187, 0);
+      box-shadow: inset 0px 20px 25px 25px rgb(255, 187, 0);
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

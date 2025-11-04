@@ -2,19 +2,33 @@
 
 .hero {
   overflow: hidden;
+  height: calc(100vh - 104px);
+
   &__wrapper {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: minmax(auto, 672px) minmax(auto, 683px);
     grid-template-columns: minmax(auto, 672px) minmax(auto, 683px);
+    -ms-grid-rows: 706px;
     grid-template-rows: 706px;
     position: relative;
   }
 
   &__content {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     max-width: 672px;
     padding-top: 101px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
 
@@ -32,18 +46,26 @@
     font-size: $fs-24;
     font-weight: $medium;
     line-height: 34px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
 
   &__button-cta {
     @include reset-button;
     padding: 14.5px 64px;
-    background: linear-gradient(0deg, $primary, $primary),
-      linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0) 53.57%,
-        rgba(255, 255, 255, 0.2) 100%
-      );
+    background-color: #ffc107;
+    background-image: -o-radial-gradient(
+      50% 120%,
+      circle,
+      rgba(255, 255, 255, 0) 53.57%,
+      rgba(255, 255, 255, 0.2) 100%
+    );
+    background-image: radial-gradient(
+      circle at 50% 120%,
+      rgba(255, 255, 255, 0) 53.57%,
+      rgba(255, 255, 255, 0.2) 100%
+    );
     border-radius: $radius-4;
     font-weight: $medium;
     font-size: $fs-18;
@@ -53,9 +75,14 @@
     min-width: 247px;
     margin: 0 0 0 9px;
     position: relative;
+    -webkit-transition: -webkit-box-shadow 0.3s ease-in-out;
+    transition: -webkit-box-shadow 0.3s ease-in-out;
+    -o-transition: box-shadow 0.3s ease-in-out;
     transition: box-shadow 0.3s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
 
     &:hover {
+      -webkit-box-shadow: 0 0 0 4px $primary-BC, 0 0 0 5px rgba($primary, 0.5);
       box-shadow: 0 0 0 4px $primary-BC, 0 0 0 5px rgba($primary, 0.5);
     }
 
@@ -66,6 +93,8 @@
       position: absolute;
       top: 50%;
       left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
       border: 1px solid #574b29;
       border-radius: 69px;
@@ -79,8 +108,11 @@
       position: absolute;
       bottom: -26px;
       left: 50%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
       transform: translateX(-50%);
       background-color: $primary;
+      -webkit-filter: blur(27.8);
       filter: blur(27.8);
       opacity: 0.3;
       z-index: -111;
@@ -104,6 +136,7 @@
       bottom: 35%;
       right: 12%;
       border-radius: 50%;
+      -webkit-filter: blur(249);
       filter: blur(249);
     }
 
@@ -116,6 +149,7 @@
       bottom: 35%;
       right: 12%;
       border-radius: 50%;
+      -webkit-filter: blur(100);
       filter: blur(100);
     }
   }
@@ -131,6 +165,8 @@
     position: absolute;
     left: 55%;
     top: 10%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
     transform: translateX(-50%);
     opacity: 0.7;
   }

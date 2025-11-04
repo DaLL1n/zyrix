@@ -1,14 +1,14 @@
-import React from 'react';
+import { Icon } from '@/shared/ui';
 import './loading.scss';
 
 const Loading = () => {
   return (
-    <div className="loader-wrapper">
-      <span className="loader-letter">Z</span>
-      <span className="loader-letter">y</span>
-      <span className="loader-letter">r</span>
-      <span className="loader-letter">i</span>
-      <span className="loader-letter">x</span>
+    <div className="loader">
+      <div className="coin">
+        <span className="engraving">
+          <Icon iconId="logo-subtract" width={250} height={250} />
+        </span>
+      </div>
     </div>
   );
 };

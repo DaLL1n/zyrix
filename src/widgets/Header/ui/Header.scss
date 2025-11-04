@@ -5,19 +5,33 @@
 
   &__wrapper {
     padding: 28px $space-4;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
 
   &__main-navigation {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     gap: $space-4;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 
     .nav-menu {
       &__list {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
         gap: $space-4;
       }
@@ -38,20 +52,34 @@
   }
 
   &__controls {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     gap: $space-3;
   }
 
   &__actions {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     gap: $space-4;
   }
 
   &__action-button {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     width: 24px;
     height: 24px;
@@ -75,6 +103,8 @@
     }
 
     > svg {
+      -webkit-transition: color 0.3s ease-in-out;
+      -o-transition: color 0.3s ease-in-out;
       transition: color 0.3s ease-in-out;
       color: $title;
     }
@@ -87,13 +117,23 @@
   }
 
   &__auth {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     gap: $space-2;
 
     &-link {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
       justify-content: center;
       background-color: transparent;
       text-align: center;
