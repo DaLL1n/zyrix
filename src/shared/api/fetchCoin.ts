@@ -3,7 +3,7 @@ import { handleApiResponse } from '../lib';
 const baseUrl = 'https://api.coingecko.com/api/v3';
 const apiKEY = process.env.API_KEY_COINS;
 
-export const GetCoins = (
+export const GetCoin = (
   endpoint: string,
   queryParams?: string,
 ): Promise<unknown> => {

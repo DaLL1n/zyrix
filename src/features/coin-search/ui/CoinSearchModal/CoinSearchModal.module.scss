@@ -10,11 +10,11 @@
   z-index: 100;
   border-radius: $radius-4;
 
-  > div {
+  div:first-child {
     margin: 0 0 $space-3;
   }
 
   &__subtitle {
-    margin-bottom: $space-2;
+    margin: 0 0 $space-3;
   }
 }

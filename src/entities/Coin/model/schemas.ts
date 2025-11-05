@@ -1,10 +1,11 @@
 import z from 'zod';
 
-export const trendSchema = z.array(
+export const coinSchema = z.array(
   z.object({
     id: z.string(),
     symbol: z.string(),
     name: z.string(),
+    image: z.string(),
     current_price: z.number(),
     price_change_percentage_24h: z.number(),
     sparkline_in_7d: z.object({
@@ -13,4 +14,4 @@ export const trendSchema = z.array(
   }),
 );
 
-export type Trend = z.infer<typeof trendSchema>;
+export type TrendMarket = z.infer<typeof coinSchema>;

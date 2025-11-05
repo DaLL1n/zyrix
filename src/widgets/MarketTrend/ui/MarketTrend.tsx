@@ -1,12 +1,17 @@
 'use client';
 import './MarketTrend.scss';
 import { useQuery } from '@tanstack/react-query';
-import { fetchTrendCoins } from '@/entities/Coin';
+import {
+  fetchTrendCoins,
+  getPriceChangeColor,
+  isPriceUp24h,
+} from '@/entities/coin';
 
 import { formatCurrency } from '@/shared/lib';
 import Link from 'next/link';
-import { CoinIcon, Loader, SparklineChartMarketTrend } from '@/shared/ui';
+import { Loader, SparklineChartMarketTrend } from '@/shared/ui';
 import PATH from '@/shared/config/paths.config';
+import Image from 'next/image';
 
 interface MarketTrendProps {}
 
@@ -17,10 +22,6 @@ const MarketTrend = ({}: MarketTrendProps) => {
   });
 
   const { data, isPending } = queryMarketTrend;
-
-  const isPriceUp24h = (coin: { price_change_percentage_24h: number }) => {
-    return coin.price_change_percentage_24h >= 0;
-  };
 
   return (
     <section className="market-trend">
@@ -59,11 +60,12 @@ const MarketTrend = ({}: MarketTrendProps) => {
                     </td>
                     <td className="market-trend__cell market-trend__cell--coin-name">
                       <div>
-                        <CoinIcon
+                        <Image
                           className="market-trend__coin-icon"
-                          coinName={coin.symbol.toUpperCase()}
-                          size="large"
-                          variant="base"
+                          src={coin.image}
+                          alt={coin.name}
+                          width={32}
+                          height={32}
                         />
                         <span className="market-trend__coin-name">
                           {coin.name}
@@ -79,18 +81,22 @@ const MarketTrend = ({}: MarketTrendProps) => {
                     <td
                       className="market-trend__cell market-trend__cell--coin-changes"
                       style={{
-                        color: isPriceUp24h(coin) ? '#4CAF50' : '#D32F2F',
+                        color: getPriceChangeColor(
+                          coin.price_change_percentage_24h,
+                        ),
                       }}
                     >
                       <span>
-                        {isPriceUp24h(coin) && '+'}
+                        {isPriceUp24h(coin.price_change_percentage_24h) && '+'}
                         {coin.price_change_percentage_24h.toFixed(2)}%
                       </span>
                     </td>
                     <td className="market-trend__cell market-trend__cell--chart">
                       <SparklineChartMarketTrend
                         data={coin.sparkline_in_7d.price}
-                        color={isPriceUp24h(coin) ? '#4CAF50' : '#D32F2F'}
+                        color={getPriceChangeColor(
+                          coin.price_change_percentage_24h,
+                        )}
                       />
                     </td>
                     <td className="market-trend__cell market-trend__cell--link-trade">
