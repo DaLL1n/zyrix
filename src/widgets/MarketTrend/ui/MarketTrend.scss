@@ -16,11 +16,7 @@
 
     &--coin-name {
       div {
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
         align-items: center;
         gap: 4px;
       }
@@ -29,6 +25,7 @@
         margin: 0 4px 0 0;
         width: 32px;
         height: 32px;
+        border-radius: 50%;
       }
 
       #{$root}__coin-name {
@@ -41,6 +38,7 @@
         font-weight: $regular;
       }
     }
+
     &--coin-price {
       font-weight: $regular;
       color: #ffffff;

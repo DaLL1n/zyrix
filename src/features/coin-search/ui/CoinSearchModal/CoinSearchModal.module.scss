@@ -2,19 +2,36 @@
 
 .modal-search {
   position: absolute;
+  display: flex;
+  flex-direction: column;
   top: 35px;
   right: 70%;
   width: 426px;
-  background-color: $bg-card;
+  max-height: 495px;
+  min-height: 495px;
   padding: $padding-4 $padding-4 50px;
-  z-index: 100;
+  background-color: $bg-card;
   border-radius: $radius-4;
+  overflow: hidden;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+  user-select: none;
 
-  div:first-child {
-    margin: 0 0 $space-3;
+  &--open {
+    opacity: 1;
+    pointer-events: auto;
+    user-select: auto;
   }
 
-  &__subtitle {
-    margin: 0 0 $space-3;
+  > div:first-child {
+    margin-bottom: $space-3;
+  }
+
+  &__title {
+    margin-bottom: $space-3;
+    font-size: $fs-14;
+    font-weight: 500;
   }
 }

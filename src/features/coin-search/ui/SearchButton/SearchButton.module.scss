@@ -1,0 +1,20 @@
+@use '../../../../shared//index.scss' as *;
+
+.button {
+  @include reset-button;
+  width: 24px;
+  height: 24px;
+  outline: none;
+
+  &:hover {
+    .icon {
+      color: $primary;
+    }
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: color 0.3s ease;
+}

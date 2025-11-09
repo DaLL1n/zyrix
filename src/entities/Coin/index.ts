@@ -1,8 +1,13 @@
 // API
 export { default as fetchTrendCoins } from './api/fetchTrendCoins';
+export { default as fetchTopSearchCoins } from './api/fetchTopSearchCoins';
+export { default as fetchSearchCoins } from './api/fetchSearchCoins';
 
 // Types
-export type { TrendMarket } from './model/schemas';
+export type { TrendMarket, TopSearchCoin } from './model/schemas';
 
 // Helpers
 export { isPriceUp24h, getPriceChangeColor } from './lib/helpers';
+
+// UI
+export { default as CoinList } from './ui/CoinList';

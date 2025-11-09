@@ -1,1 +1,1 @@
-export { GetCoin } from './fetchCoin';
+export { getCoin } from './fetchCoin';

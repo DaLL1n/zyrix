@@ -1,9 +1,9 @@
-import React from 'react';
 import './Header.scss';
-import { Icon, Logo, NavMenu } from '@/shared/ui';
+import { Logo, NavMenu } from '@/shared/ui';
 import Link from 'next/link';
 import { navItems } from '../model/navItems';
-import { CoinSearchModal } from '@/features/coin-search';
+
+import HeaderActions from './HeaderActions/HeaderActions';
 
 const Header = () => {
   return (
@@ -15,16 +15,8 @@ const Header = () => {
             <NavMenu purpose="header" navItems={navItems} />
           </div>
           <div className="header__controls">
-            <div className="header__actions">
-              <button className="header__action-button" type="button">
-                <Icon iconId="search" width={24} height={24} />
-              </button>
-              <button className="header__action-button" type="button">
-                <Icon iconId="earth" width={24} height={24} />
-              </button>
-              <CoinSearchModal />
-            </div>
             <div className="header__auth">
+              <HeaderActions />
               <Link
                 className="header__auth-link header__auth-link--primary"
                 href="/sign-up"

@@ -1,8 +1,16 @@
-import React from 'react';
-import './Loader.scss';
+import styles from './Loader.module.scss';
+import Icon from '../Icon/Icon';
 
 const Loader = () => {
-  return <div className="loading-bar">Zyrix</div>;
+  return (
+    <div className={styles.loader}>
+      <div className={styles.coin}>
+        <span className={styles.engraving}>
+          <Icon iconId="logo-subtract" width={50} height={50} />
+        </span>
+      </div>
+    </div>
+  );
 };
 
 export default Loader;

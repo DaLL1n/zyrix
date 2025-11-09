@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import './SparklineChartMarketTrend.scss';
 import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
