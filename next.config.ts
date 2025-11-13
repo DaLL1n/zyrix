@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
    * (т.к. адрес будет https://dall1n.github.io/zyrix/)
    * Отключаем для локальной разработки
    */
-  // basePath: process.env.NODE_ENV === 'production' ? '/zyrix' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/zyrix' : '',
 
   // -----------------------------------------------------------------
   // ↑↑↑ КОНЕЦ ВАЖНЫХ НАСТРОЕК ↑↑↑
@@ -27,7 +27,7 @@ const nextConfig: NextConfig = {
   images: {
     // ВАЖНО: для 'output: export' картинки Next.js Image
     // нужно "отключить", иначе будет ошибка при 'npm run build'.
-    unoptimized: true,
+    // unoptimized: true,
 
     remotePatterns: [
       {
