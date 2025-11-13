@@ -1,7 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
 import './Logo.scss';
-import Icon from '../Icon/Icon';
+import Link from 'next/link';
+import Image from 'next/image';
 
 interface LogoProps {
   purpose: 'header' | 'footer' | 'auth';
@@ -10,9 +9,23 @@ interface LogoProps {
 }
 
 const Logo = ({ purpose = 'header', height, width }: LogoProps) => {
+  const isHeader = purpose === 'header';
+
   return (
-    <Link className={`logo-link logo-link--${purpose}`} href="/">
-      <Icon iconId={`${purpose}-logo`} width={width} height={height} />
+    <Link
+      className={`logo-link logo-link--${purpose}`}
+      href="/"
+      aria-label="back to home"
+      title="back to home"
+    >
+      <Image
+        src={`/icons/icon-${purpose}-logo.svg`}
+        width={width}
+        height={height}
+        alt="Zyrix"
+        priority={isHeader}
+        quality={100}
+      />
     </Link>
   );
 };

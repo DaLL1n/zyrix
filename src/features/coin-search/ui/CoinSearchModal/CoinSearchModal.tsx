@@ -1,13 +1,11 @@
 'use client';
-import { Input, Loader } from '@/shared/ui';
 import styles from './CoinSearchModal.module.scss';
-import {
-  CoinList,
-  fetchTopSearchCoins,
-  type TopSearchCoin,
-} from '@/entities/coin';
-import { useEffect, useRef, useState } from 'react';
+import { Input, Loader } from '@/shared/ui';
+import { CoinList } from '@/entities/coin';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
+import Image from 'next/image';
+import useSearchCoins from '../../model/useSearchCoins';
 
 interface CoinSearchModalProps {
   isOpen: boolean;
@@ -16,42 +14,39 @@ interface CoinSearchModalProps {
 }
 
 const CoinSearchModal = ({ isOpen, onClose, ref }: CoinSearchModalProps) => {
-  const [data, setData] = useState<TopSearchCoin | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const fetchData = async (): Promise<void> => {
-    if (isOpen) {
-      try {
-        const result = await fetchTopSearchCoins();
-        setData(result);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-  };
-
-  const handleClose = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      onClose();
-    }
-  };
-
+  const [valueInput, setValueInput] = useState<string>('');
+  const { data, isLoading, isError, searchCoins } = useSearchCoins({
+    isOpen,
+    valueInput,
+  });
   const modalRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (event: MouseEvent) => {
-    const target = event.target as Node;
-    const isClickInsideModal = modalRef.current?.contains(target);
-    const isClickOnButton =
-      ref && 'current' in ref && ref.current?.contains(target);
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setValueInput(e.target.value);
+  }, []);
 
-    if (!isClickInsideModal && !isClickOnButton) {
-      onClose();
-    }
-  };
+  const handleClose = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    },
+    [onClose],
+  );
 
-  useEffect(() => {
-    fetchData();
-  }, [isOpen]);
+  const handleClickOutside = useCallback(
+    (event: MouseEvent) => {
+      const target = event.target as Node;
+      const isClickInsideModal = modalRef.current?.contains(target);
+      const isClickOnButton =
+        ref && 'current' in ref && ref.current?.contains(target);
+
+      if (!isClickInsideModal && !isClickOnButton) {
+        onClose();
+      }
+    },
+    [onClose, ref],
+  );
 
   useEffect(() => {
     if (!isOpen) return;
@@ -65,7 +60,7 @@ const CoinSearchModal = ({ isOpen, onClose, ref }: CoinSearchModalProps) => {
       window.removeEventListener('scroll', onClose);
       window.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpen, handleClose, handleClickOutside, onClose]);
 
   return (
     <div
@@ -75,14 +70,29 @@ const CoinSearchModal = ({ isOpen, onClose, ref }: CoinSearchModalProps) => {
       })}
     >
       <Input
+        onChange={handleChange}
+        value={valueInput}
         type="search"
         icon="search"
         placeholder="Search"
-        disabled={isLoading}
       />
       <h3 className={styles['modal-search__title']}>Top Searches</h3>
 
-      {isLoading ? <Loader /> : <CoinList coins={data!} currency="USDT" />}
+      {isLoading ? (
+        <Loader />
+      ) : isError || !data || searchCoins?.length === 0 ? (
+        <div className={styles['modal-search__no-data']}>
+          <Image
+            src="/images/no-data-modal-search.png"
+            alt="No data"
+            width={120}
+            height={150}
+            loading="lazy"
+          />
+        </div>
+      ) : (
+        <CoinList coins={data} currency="USDT" />
+      )}
     </div>
   );
 };

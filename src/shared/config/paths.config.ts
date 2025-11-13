@@ -4,6 +4,7 @@ interface Paths {
   SPOT: string;
   SUPPORT: string;
   BLOG: string;
+  AUTH: string;
   EXCHANGE: string;
   P2P_TRADING: string;
   SECURITIES_TRADING: string;
@@ -27,6 +28,8 @@ const PATH: Paths = {
   SPOT: '/spot',
   SUPPORT: '/support',
   BLOG: '/blog',
+  AUTH: '/auth',
+
   // Footer
   EXCHANGE: '/exchange',
   P2P_TRADING: '/p2p-trading',

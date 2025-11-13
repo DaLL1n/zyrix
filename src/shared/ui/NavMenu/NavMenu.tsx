@@ -1,9 +1,9 @@
 'use client';
 import Link from 'next/link';
-import React from 'react';
 import './NavMenu.scss';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
+import { memo } from 'react';
 
 export interface NavMenuHeader {
   navItems: {
@@ -21,7 +21,7 @@ export interface NavMenuFooter {
 
 export type NavMenuProps = NavMenuFooter | NavMenuHeader;
 
-const NavMenu = ({ navItems, purpose }: NavMenuProps) => {
+const NavMenu = memo(({ navItems, purpose }: NavMenuProps) => {
   const pathname = usePathname();
   return (
     <nav className={`nav-menu`}>
@@ -61,6 +61,8 @@ const NavMenu = ({ navItems, purpose }: NavMenuProps) => {
         )}
     </nav>
   );
-};
+});
+
+NavMenu.displayName = 'NavMenu';
 
 export default NavMenu;

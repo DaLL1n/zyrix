@@ -1,12 +1,13 @@
+import styles from './CoinList.module.scss';
 import Link from 'next/link';
 import normalizeCoinData from '../lib/normalizeCoinData';
 import type { SearchCoins, TopSearchCoin } from '../model/schemas';
-import styles from './CoinList.module.scss';
 import PATH from '@/shared/config/paths.config';
 import Image from 'next/image';
 import { formatCurrency } from '@/shared/lib';
 import { getPriceChangeColor, isPriceUp24h } from '../lib/helpers';
 import { Icon } from '@/shared/ui';
+import { memo } from 'react';
 
 interface CoinList {
   coins: TopSearchCoin | SearchCoins;
@@ -16,7 +17,7 @@ interface CoinListProps extends CoinList {
   currency: 'USDT' | 'BTC' | 'ETH';
 }
 
-const CoinList = ({ coins, currency }: CoinListProps) => {
+const CoinList = memo(({ coins, currency }: CoinListProps) => {
   return (
     <ul className={styles['coin-list']}>
       {normalizeCoinData(coins)?.map((coin) => {
@@ -26,6 +27,7 @@ const CoinList = ({ coins, currency }: CoinListProps) => {
               <Link
                 className={styles['coin-list__link']}
                 href={`${PATH.SPOT}/${coin.id}`}
+                title={coin.name}
               >
                 <div className={styles['coin-list__info']}>
                   <Image
@@ -86,6 +88,8 @@ const CoinList = ({ coins, currency }: CoinListProps) => {
       })}
     </ul>
   );
-};
+});
+
+CoinList.displayName = 'CoinList';
 
 export default CoinList;

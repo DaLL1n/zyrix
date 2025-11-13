@@ -4,7 +4,6 @@
   $list: &;
   display: flex;
   flex-direction: column;
-  gap: $space-2;
   padding: 6px 10px 0 6px;
   margin: -6px -10px 0 -6px;
   max-height: 304px;
@@ -45,6 +44,7 @@
     justify-content: space-between;
     font-size: $fs-16;
     position: relative;
+    min-height: 40px;
 
     &::after {
       content: '';
@@ -54,7 +54,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: calc(100% + 12px);
-      height: 40px;
+      height: 100%;
       background-color: $primary-BC;
       border-radius: $radius-4;
       transition: opacity 0.3s ease-in-out;
@@ -72,13 +72,14 @@
     display: flex;
     align-items: center;
     gap: $space-1;
-    min-width: 123px;
+    min-width: fit-content;
   }
 
   &__price {
-    min-width: 90px;
-    font-variant-numeric: tabular-nums;
+    width: 100%;
+    max-width: 85px;
     margin-left: auto;
+    font-variant-numeric: tabular-nums;
   }
 
   &__price-change {

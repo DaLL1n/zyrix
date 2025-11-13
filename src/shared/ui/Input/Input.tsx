@@ -8,6 +8,8 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
   maxWidth?: string | number;
   icon?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  value?: string | number;
 }
 
 const Input = ({
@@ -15,6 +17,8 @@ const Input = ({
   placeholder,
   maxWidth,
   icon,
+  onChange,
+  value,
   ...props
 }: InputProps) => {
   return (
@@ -31,6 +35,8 @@ const Input = ({
         placeholder={placeholder}
         name={type}
         autoComplete={type !== 'search' ? 'on' : 'off'}
+        value={value}
+        onChange={onChange}
         {...props}
       />
     </div>

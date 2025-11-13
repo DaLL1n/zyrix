@@ -29,7 +29,7 @@ const normalizeCoinData = (coins: TopSearchCoin | SearchCoins) => {
         symbol: coin.symbol,
         image: coin.image,
         price: coin.current_price,
-        priceChange24h: coin.price_change_percentage_24h_in_currency,
+        priceChange24h: coin.price_change_percentage_24h,
       };
     });
   }

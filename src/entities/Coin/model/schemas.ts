@@ -42,7 +42,7 @@ export const searchCoinsSchema = z.array(
   baseCoinSchema.extend({
     image: z.string(),
     current_price: z.number(),
-    price_change_percentage_24h_in_currency: z.number(),
+    price_change_percentage_24h: z.number(),
   }),
 );
 export type SearchCoins = z.infer<typeof searchCoinsSchema>;
