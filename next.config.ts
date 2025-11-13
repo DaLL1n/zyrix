@@ -13,9 +13,9 @@ const nextConfig: NextConfig = {
   /**
    * Указываем, что сайт будет лежать в подпапке '/zyrix'
    * (т.к. адрес будет https://dall1n.github.io/zyrix/)
-   * Отключаем для локальной разработки
+   * Используем для GitHub Pages деплоя
    */
-  basePath: process.env.NODE_ENV === 'production' ? '/zyrix' : '',
+  basePath: process.env.GITHUB_ACTIONS ? '/zyrix' : '',
 
   // -----------------------------------------------------------------
   // ↑↑↑ КОНЕЦ ВАЖНЫХ НАСТРОЕК ↑↑↑
