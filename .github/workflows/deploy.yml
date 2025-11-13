@@ -3,7 +3,7 @@ name: Deploy Next.js site to Pages
 on:
   # Запускать автоматически при каждом push в ветку 'main'
   push:
-    branches: ["main"]
+    branches: ["master"]
   # Позволяет запускать вручную из вкладки Actions
   workflow_dispatch:
 
