@@ -19,7 +19,7 @@ const Logo = ({ purpose = 'header', height, width }: LogoProps) => {
       title="back to home"
     >
       <Image
-        src={`/icons/icon-${purpose}-logo.svg`}
+        src={`icons/icon-${purpose}-logo.svg`}
         width={width}
         height={height}
         alt="Zyrix"
