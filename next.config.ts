@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
    * (т.к. адрес будет https://dall1n.github.io/zyrix/)
    * Отключаем для локальной разработки
    */
-  basePath: process.env.NODE_ENV === 'production' ? '/zyrix' : '',
+  // basePath: process.env.NODE_ENV === 'production' ? '/zyrix' : '',
 
   // -----------------------------------------------------------------
   // ↑↑↑ КОНЕЦ ВАЖНЫХ НАСТРОЕК ↑↑↑
