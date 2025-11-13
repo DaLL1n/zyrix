@@ -27,7 +27,7 @@ const nextConfig: NextConfig = {
   images: {
     // ВАЖНО: для 'output: export' картинки Next.js Image
     // нужно "отключить", иначе будет ошибка при 'npm run build'.
-    // unoptimized: true,
+    unoptimized: true,
 
     remotePatterns: [
       {
