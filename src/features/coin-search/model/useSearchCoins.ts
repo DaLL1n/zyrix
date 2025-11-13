@@ -25,7 +25,7 @@ const useSearchCoins = ({ isOpen, valueInput }: UseSearchCoinsProps) => {
 
   const searchQuery = useQuery({
     queryKey: ['search'],
-    queryFn: () => fetchSearchCoins(),
+    queryFn: fetchSearchCoins,
     enabled: isOpen && !isEmptyInput,
     ...queryOptions,
   });
