@@ -17,7 +17,7 @@ const Icon = memo(
         aria-hidden="true"
         {...props}
       >
-        <use href={`/icons.svg#icon-${iconId}`}></use>
+        <use href={`icons.svg#icon-${iconId}`}></use>
       </svg>
     );
   },

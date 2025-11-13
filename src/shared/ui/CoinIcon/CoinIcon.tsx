@@ -20,7 +20,7 @@ const CoinIcon = ({
       aria-hidden="true"
       {...props}
     >
-      <use href={`/coin-icons.svg#${coinName}-${variant}`}></use>
+      <use href={`coin-icons.svg#${coinName}-${variant}`}></use>
     </svg>
   );
 };
