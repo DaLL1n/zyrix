@@ -7,7 +7,7 @@ import { Icon } from '@/shared/ui';
 import { Header } from '@/widgets/Header';
 import { Footer } from '@/widgets/Footer';
 
-const NotFound = async () => {
+const NotFound = () => {
   return (
     <>
       <Header />

@@ -1,3 +1,5 @@
+'use client';
+
 import './MarketTrend.scss';
 import {
   fetchTrendCoins,
@@ -7,12 +9,46 @@ import {
 
 import { formatCurrency } from '@/shared/lib';
 import Link from 'next/link';
-import { SparklineChartMarketTrend } from '@/shared/ui';
+import { SparklineChartMarketTrend, Loader } from '@/shared/ui';
 import PATH from '@/shared/config/paths.config';
 import Image from 'next/image';
+import { useQuery } from '@tanstack/react-query';
 
-const MarketTrend = async () => {
-  const data = await fetchTrendCoins();
+const MarketTrend = () => {
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['trendCoins'],
+    queryFn: fetchTrendCoins,
+  });
+
+  if (isLoading) {
+    return (
+      <section className="market-trend">
+        <div className="container container--narrow">
+          <h2 className="market-trend__title">
+            <span className="select-word">Market</span> Trend
+          </h2>
+          <div style={{ display: 'flex', justifyContent: 'center', padding: '2rem' }}>
+            <Loader />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (isError || !data) {
+    return (
+      <section className="market-trend">
+        <div className="container container--narrow">
+          <h2 className="market-trend__title">
+            <span className="select-word">Market</span> Trend
+          </h2>
+          <p style={{ textAlign: 'center', padding: '2rem' }}>
+            Failed to load market trends
+          </p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="market-trend">

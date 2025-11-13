@@ -1,6 +1,6 @@
 # Zyrix - Cryptocurrency Platform
 
-### [🚀 Демо-версия](https://github.com/DaLL1n/zyrix) (в разработке)
+### [🚀 Посмотреть демо-версию](https://dall1n.github.io/zyrix/)
 
 ---
 
