@@ -83,7 +83,7 @@ const CoinSearchModal = ({ isOpen, onClose, ref }: CoinSearchModalProps) => {
       ) : isError || !data || searchCoins?.length === 0 ? (
         <div className={styles['modal-search__no-data']}>
           <Image
-            src="/images/no-data-modal-search.png"
+            src="images/no-data-modal-search.png"
             alt="No data"
             width={120}
             height={150}
