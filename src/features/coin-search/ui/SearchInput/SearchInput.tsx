@@ -1,6 +1,6 @@
 'use client';
 
-import type { SearchCoins } from '@/entities/coin/model/schemas';
+import type { SearchCoins } from '@/entities/coin';
 import { Input } from '@/shared/ui';
 import { useCallback, useMemo, useState } from 'react';
 
