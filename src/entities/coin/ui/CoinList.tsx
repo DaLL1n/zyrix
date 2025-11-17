@@ -32,7 +32,9 @@ const CoinList = memo(({ coins, currency }: CoinListProps) => {
                 <div className={styles['coin-list__info']}>
                   <Image
                     className={styles['coin-list__icon']}
-                    src={coin.image}
+                    src={
+                      coin.image ? coin.image : 'icons/icon-logo-subtract.svg'
+                    }
                     alt={coin.name}
                     width={24}
                     height={24}
@@ -44,13 +46,17 @@ const CoinList = memo(({ coins, currency }: CoinListProps) => {
                 <span className={styles['coin-list__price']}>
                   {formatCurrency(coin.price)}
                 </span>
-                <span
-                  className={styles['coin-list__price-change']}
-                  style={{ color: getPriceChangeColor(coin.priceChange24h) }}
-                >
-                  {isPriceUp24h(coin.priceChange24h) ? '+' : ''}
-                  {coin.priceChange24h.toFixed(2)}%
-                </span>
+                {coin.priceChange24h !== null ? (
+                  <span
+                    className={styles['coin-list__price-change']}
+                    style={{ color: getPriceChangeColor(coin.priceChange24h) }}
+                  >
+                    {isPriceUp24h(coin.priceChange24h) ? '+' : ''}
+                    {coin.priceChange24h.toFixed(2)}%
+                  </span>
+                ) : (
+                  <span className={styles['coin-list__price-change']}></span>
+                )}
               </Link>
               <button
                 className={`${styles['coin-list__favorite-button']} ${styles['coin-list__favorite-button--secondary']}`}

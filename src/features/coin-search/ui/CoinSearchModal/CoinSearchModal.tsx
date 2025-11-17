@@ -62,6 +62,15 @@ const CoinSearchModal = ({ isOpen, onClose, ref }: CoinSearchModalProps) => {
     };
   }, [isOpen, handleClose, handleClickOutside, onClose]);
 
+  useEffect(() => {
+    if (!isOpen) {
+      const timer = setTimeout(() => {
+        setValueInput('');
+      }, 350);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
+
   const renderSearchResults = () => {
     switch (activeQuery.status) {
       case 'pending':
