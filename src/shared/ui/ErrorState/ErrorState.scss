@@ -1,0 +1,24 @@
+@use '../../index.scss' as *;
+
+.error-message {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+
+  &__text {
+    font-size: 24px;
+  }
+
+  &__button-retry {
+    @include reset-button;
+    background-color: $primary;
+    color: $bg-card;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 32px;
+    width: 30%;
+  }
+}

@@ -6,7 +6,7 @@ const Loader = () => {
     <div className={styles.loader}>
       <div className={styles.coin}>
         <span className={styles.engraving}>
-          <Icon iconId="logo-subtract" width={50} height={50} />
+          <Icon iconId="logo-subtract" width={75} height={75} />
         </span>
       </div>
     </div>

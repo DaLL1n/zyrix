@@ -42,15 +42,13 @@ const useSearchCoins = ({ isOpen, valueInput }: UseSearchCoinsProps) => {
     });
   }, [searchQuery.data, valueInput, isEmptyInput]);
 
-  const isLoading = topSearchQuery.isLoading || searchQuery.isLoading;
-  const isError = topSearchQuery.isError || searchQuery.isError;
+  const activeQuery = isEmptyInput ? topSearchQuery : searchQuery;
   const data = isEmptyInput ? topSearchQuery.data : searchCoins;
 
   return {
+    activeQuery,
     searchCoins,
     data,
-    isLoading,
-    isError,
   };
 };
 

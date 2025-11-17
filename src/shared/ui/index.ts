@@ -6,3 +6,4 @@ export { default as CoinIcon } from './CoinIcon/CoinIcon';
 export { default as Loader } from './Loader/Loader';
 export { default as SparklineChartMarketTrend } from './SparklineChartMarketTrend/SparklineChartMarketTrend';
 export { default as Input } from './Input/Input';
+export { default as ErrorState } from './ErrorState/ErrorState';

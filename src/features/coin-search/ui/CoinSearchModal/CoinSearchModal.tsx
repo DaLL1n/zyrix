@@ -1,6 +1,6 @@
 'use client';
 import styles from './CoinSearchModal.module.scss';
-import { Input, Loader } from '@/shared/ui';
+import { ErrorState, Input, Loader } from '@/shared/ui';
 import { CoinList } from '@/entities/coin';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
@@ -15,7 +15,7 @@ interface CoinSearchModalProps {
 
 const CoinSearchModal = ({ isOpen, onClose, ref }: CoinSearchModalProps) => {
   const [valueInput, setValueInput] = useState<string>('');
-  const { data, isLoading, isError, searchCoins } = useSearchCoins({
+  const { data, searchCoins, activeQuery } = useSearchCoins({
     isOpen,
     valueInput,
   });
@@ -62,6 +62,44 @@ const CoinSearchModal = ({ isOpen, onClose, ref }: CoinSearchModalProps) => {
     };
   }, [isOpen, handleClose, handleClickOutside, onClose]);
 
+  const renderSearchResults = () => {
+    switch (activeQuery.status) {
+      case 'pending':
+        return <Loader />;
+      case 'error':
+        return (
+          <ErrorState
+            errorMessage="Failed to load data"
+            onRetry={activeQuery.refetch}
+          />
+        );
+
+      case 'success':
+        if (
+          searchCoins &&
+          searchCoins.length === 0 &&
+          valueInput.trim().length > 0
+        )
+          return (
+            <div className={styles['modal-search__no-data']}>
+              <Image
+                src="images/no-data-modal-search.png"
+                alt="No Data"
+                width={150}
+                height={180}
+                loading="lazy"
+              />
+            </div>
+          );
+        if (data) {
+          return <CoinList coins={data} currency="USDT" />;
+        }
+
+      default:
+        return null;
+    }
+  };
+
   return (
     <div
       ref={modalRef}
@@ -78,21 +116,7 @@ const CoinSearchModal = ({ isOpen, onClose, ref }: CoinSearchModalProps) => {
       />
       <h3 className={styles['modal-search__title']}>Top Searches</h3>
 
-      {isLoading ? (
-        <Loader />
-      ) : isError || !data || searchCoins?.length === 0 ? (
-        <div className={styles['modal-search__no-data']}>
-          <Image
-            src="images/no-data-modal-search.png"
-            alt="No data"
-            width={120}
-            height={150}
-            loading="lazy"
-          />
-        </div>
-      ) : (
-        <CoinList coins={data} currency="USDT" />
-      )}
+      {renderSearchResults()}
     </div>
   );
 };
