@@ -22,15 +22,7 @@ export interface NavMenuFooter {
 export type NavMenuProps = NavMenuFooter | NavMenuHeader;
 
 const NavMenu = memo(({ navItems, purpose }: NavMenuProps) => {
-  const rawPathname = usePathname();
-  const pathname = rawPathname.replace(/^\/zyrix/, '') || '/';
-
-  console.log('NavMenu Debug:', {
-    rawPathname,
-    pathname,
-    basePath: process.env.NEXT_PUBLIC_BASE_PATH,
-    sampleItemPath: purpose === 'header' ? navItems[0]?.path : 'N/A',
-  });
+  const pathname = usePathname();
 
   return (
     <nav className={`nav-menu`}>
