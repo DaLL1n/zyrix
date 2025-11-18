@@ -23,6 +23,7 @@ export type NavMenuProps = NavMenuFooter | NavMenuHeader;
 
 const NavMenu = memo(({ navItems, purpose }: NavMenuProps) => {
   const pathname = usePathname();
+  console.log(pathname);
   return (
     <nav className={`nav-menu`}>
       {purpose === 'header' && (

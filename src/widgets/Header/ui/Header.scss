@@ -29,6 +29,10 @@
       &__link {
         font-size: $fs-18;
         color: $sec-TX;
+
+        &:hover {
+          color: $primary;
+        }
       }
     }
   }
