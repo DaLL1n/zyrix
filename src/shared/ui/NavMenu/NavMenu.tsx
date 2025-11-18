@@ -22,9 +22,15 @@ export interface NavMenuFooter {
 export type NavMenuProps = NavMenuFooter | NavMenuHeader;
 
 const NavMenu = memo(({ navItems, purpose }: NavMenuProps) => {
-  const pathname = usePathname();
+  const rawPathname = usePathname();
+  const pathname = rawPathname.replace(/^\/zyrix/, '') || '/';
 
-  const normalizedPathname = pathname.replace(/^\/zyrix/, '') || '/';
+  console.log('NavMenu Debug:', {
+    rawPathname,
+    pathname,
+    basePath: process.env.NEXT_PUBLIC_BASE_PATH,
+    sampleItemPath: purpose === 'header' ? navItems[0]?.path : 'N/A',
+  });
 
   return (
     <nav className={`nav-menu`}>
@@ -33,7 +39,7 @@ const NavMenu = memo(({ navItems, purpose }: NavMenuProps) => {
           {navItems.map((item) => (
             <li
               className={clsx(`nav-menu__item`, {
-                [`nav-menu__item--active`]: item.path === normalizedPathname,
+                [`nav-menu__item--active`]: item.path === pathname,
               })}
               key={item.item}
             >
