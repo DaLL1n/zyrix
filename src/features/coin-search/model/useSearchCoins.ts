@@ -38,7 +38,9 @@ const useSearchCoins = ({ isOpen, valueInput }: UseSearchCoinsProps) => {
     return searchQuery.data.filter((coin) => {
       const coinName = coin.name.toLowerCase();
       const coinSymbol = coin.symbol.toLowerCase();
-      return coinName.includes(inputValue) || coinSymbol.includes(inputValue);
+      return (
+        coinName.startsWith(inputValue) || coinSymbol.startsWith(inputValue)
+      );
     });
   }, [searchQuery.data, valueInput, isEmptyInput]);
 

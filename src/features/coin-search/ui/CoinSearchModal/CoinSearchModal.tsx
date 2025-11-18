@@ -15,15 +15,25 @@ interface CoinSearchModalProps {
 
 const CoinSearchModal = ({ isOpen, onClose, ref }: CoinSearchModalProps) => {
   const [valueInput, setValueInput] = useState<string>('');
+  const modalRef = useRef<HTMLDivElement>(null);
+
   const { data, searchCoins, activeQuery } = useSearchCoins({
     isOpen,
     valueInput,
   });
-  const modalRef = useRef<HTMLDivElement>(null);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setValueInput(e.target.value);
   }, []);
+
+  const handleInputKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+      }
+    },
+    [],
+  );
 
   const handleClose = useCallback(
     (e: KeyboardEvent) => {
@@ -75,6 +85,7 @@ const CoinSearchModal = ({ isOpen, onClose, ref }: CoinSearchModalProps) => {
     switch (activeQuery.status) {
       case 'pending':
         return <Loader />;
+
       case 'error':
         return (
           <ErrorState
@@ -88,7 +99,7 @@ const CoinSearchModal = ({ isOpen, onClose, ref }: CoinSearchModalProps) => {
           searchCoins &&
           searchCoins.length === 0 &&
           valueInput.trim().length > 0
-        )
+        ) {
           return (
             <div className={styles['modal-search__no-data']}>
               <Image
@@ -96,13 +107,16 @@ const CoinSearchModal = ({ isOpen, onClose, ref }: CoinSearchModalProps) => {
                 alt="No Data"
                 width={150}
                 height={180}
-                loading="lazy"
+                loading="eager"
               />
             </div>
           );
+        }
+
         if (data) {
           return <CoinList coins={data} currency="USDT" />;
         }
+        return null;
 
       default:
         return null;
@@ -117,8 +131,9 @@ const CoinSearchModal = ({ isOpen, onClose, ref }: CoinSearchModalProps) => {
       })}
     >
       <Input
-        onChange={handleChange}
         value={valueInput}
+        onChange={handleChange}
+        onKeyDown={handleInputKeyDown}
         type="search"
         icon="search"
         placeholder="Search"

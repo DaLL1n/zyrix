@@ -1,3 +1,5 @@
+@use '../../index.scss' as *;
+
 .social-list {
   padding: 0;
   margin: 0;
@@ -15,6 +17,14 @@
     > svg {
       width: 24px;
       height: 24px;
+      transition:
+        transform 0.3s ease-in-out,
+        color 0.3s ease-in-out;
+    }
+
+    &:hover > svg {
+      transform: scale(1.1);
+      color: $primary;
     }
   }
 }

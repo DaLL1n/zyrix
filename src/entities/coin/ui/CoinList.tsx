@@ -38,6 +38,7 @@ const CoinList = memo(({ coins, currency }: CoinListProps) => {
                     alt={coin.name}
                     width={24}
                     height={24}
+                    placeholder="empty"
                   />
                   <span className={styles['coin-list__name']}>
                     {coin.symbol.toUpperCase()} {currency}
