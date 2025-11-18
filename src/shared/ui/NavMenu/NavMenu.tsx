@@ -23,7 +23,9 @@ export type NavMenuProps = NavMenuFooter | NavMenuHeader;
 
 const NavMenu = memo(({ navItems, purpose }: NavMenuProps) => {
   const pathname = usePathname();
-  console.log(pathname);
+
+  const normalizedPathname = pathname.replace(/^\/zyrix/, '') || '/';
+
   return (
     <nav className={`nav-menu`}>
       {purpose === 'header' && (
@@ -31,7 +33,7 @@ const NavMenu = memo(({ navItems, purpose }: NavMenuProps) => {
           {navItems.map((item) => (
             <li
               className={clsx(`nav-menu__item`, {
-                [`nav-menu__item--active`]: item.path === pathname,
+                [`nav-menu__item--active`]: item.path === normalizedPathname,
               })}
               key={item.item}
             >
