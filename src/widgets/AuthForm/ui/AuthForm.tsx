@@ -3,7 +3,6 @@ import { Logo } from '@/shared/ui';
 import { memo, useState } from 'react';
 import AuthMethodToggle from '@/features/auth/ui/AuthMethodToggle/AuthMethodToggle';
 import AuthFormBase from './AuthFormBase/AuthFormBase';
-import { usePathname } from 'next/navigation';
 
 interface AuthFormProps {
   mode: 'login' | 'sign-up';

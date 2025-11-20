@@ -4,8 +4,7 @@ import { AUTH_TEXTS } from '../../model/constants';
 
 interface AuthFormBaseProps {
   mode: 'login' | 'sign-up';
-  onSubmit: React.FormEventHandler<HTMLFormElement>;
-  onModeSwitch: () => void;
+  onSubmit?: React.FormEventHandler<HTMLFormElement>;
   isLoading?: boolean;
 }
 
