@@ -1,7 +1,6 @@
-import { Icon } from '@/shared/ui';
-import Link from 'next/link';
-import React from 'react';
+import PATH from '@/shared/config/paths.config';
 import './HeroHome.scss';
+import { Button, Icon } from '@/shared/ui';
 
 const HeroHome = () => {
   return (
@@ -19,9 +18,13 @@ const HeroHome = () => {
               <span className="hero__advantage">Stable</span>
               <span className="hero__advantage">Reliable</span>
             </div>
-            <Link className="hero__button-cta" href="/sign-up">
+            <Button
+              className="hero__button-cta"
+              href={PATH.SIGN_UP}
+              variant="primary"
+            >
               Start Trading
-            </Link>
+            </Button>
           </div>
           <div className="hero__earth-wrapper">
             <Icon

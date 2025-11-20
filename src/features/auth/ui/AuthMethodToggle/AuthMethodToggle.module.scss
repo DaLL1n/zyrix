@@ -1,0 +1,27 @@
+@use '../../../../shared/index.scss' as *;
+
+.auth-method-toggle {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  min-height: 52px;
+  padding: 5px;
+  border-radius: 40px;
+  border: 1px solid #ffc107;
+  margin-bottom: $space-5;
+
+  & &__button {
+    flex: 1;
+    font-size: $fs-16;
+    padding: 8px;
+    transition:
+      background-color 0.3s ease-in-out,
+      color 0.3s ease-in-out;
+
+    &--active {
+      background-color: $primary;
+      color: $primary-BC;
+      cursor: default;
+    }
+  }
+}

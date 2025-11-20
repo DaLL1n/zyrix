@@ -37,28 +37,24 @@
     color: $sec-TX;
   }
 
-  &__button-cta {
-    @include reset-button;
+  &__content &__button-cta {
     position: relative;
-    min-width: 247px;
     min-height: 56px;
     margin: 0 0 0 9px;
     padding: 14.5px 64px;
-    background-color: #ffc107;
     background-image: radial-gradient(
       circle at 50% 120%,
       rgba(255, 255, 255, 0) 53.57%,
       rgba(255, 255, 255, 0.2) 100%
     );
-    border-radius: $radius-4;
     font-size: $fs-18;
-    font-weight: $medium;
-    line-height: 100%;
-    color: $primary-BC;
+    max-width: 247px;
     transition: box-shadow 0.3s ease-in-out;
 
     &:hover {
-      box-shadow: 0 0 0 4px $primary-BC, 0 0 0 5px rgba($primary, 0.5);
+      box-shadow:
+        0 0 0 4px $primary-BC,
+        0 0 0 5px rgba($primary, 0.5);
     }
 
     &::after {

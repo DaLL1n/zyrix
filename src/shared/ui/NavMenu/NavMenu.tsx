@@ -27,7 +27,7 @@ const NavMenu = memo(({ navItems, purpose }: NavMenuProps) => {
   return (
     <nav className={`nav-menu`}>
       {purpose === 'header' && (
-        <ul className={`nav-menu__list`}>
+        <ul className="nav-menu__list">
           {navItems.map((item) => (
             <li
               className={clsx(`nav-menu__item`, {

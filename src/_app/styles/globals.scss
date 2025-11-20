@@ -1,4 +1,5 @@
 @forward './normalize';
+@forward './visually-hidden.scss';
 @use '../../shared/index.scss' as *;
 
 *,

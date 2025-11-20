@@ -1,12 +1,11 @@
 @use '../../../../shared//index.scss' as *;
 
 .button {
-  @include reset-button;
   width: 24px;
   height: 24px;
   outline: none;
 
-  &:hover {
+  &:is(:focus-visible, :hover) {
     .icon {
       color: $primary;
     }

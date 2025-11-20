@@ -1,6 +1,5 @@
 import './Header.scss';
-import { Logo, NavMenu } from '@/shared/ui';
-import Link from 'next/link';
+import { Button, Logo, NavMenu } from '@/shared/ui';
 import { navItems } from '../model/navItems';
 
 import HeaderActions from './HeaderActions/HeaderActions';
@@ -18,18 +17,20 @@ const Header = () => {
           <div className="header__controls">
             <div className="header__auth">
               <HeaderActions />
-              <Link
-                className="header__auth-link header__auth-link--primary"
-                href={PATH.AUTH}
+              <Button
+                className="header__auth-link"
+                href={PATH.SIGN_UP}
+                variant="primary"
               >
                 Sign in
-              </Link>
-              <Link
-                className="header__auth-link header__auth-link--secondary"
-                href={PATH.AUTH}
+              </Button>
+              <Button
+                className="header__auth-link"
+                href={PATH.LOGIN}
+                variant="secondary"
               >
                 Login
-              </Link>
+              </Button>
             </div>
           </div>
         </div>

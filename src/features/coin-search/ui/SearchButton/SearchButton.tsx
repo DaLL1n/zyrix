@@ -1,5 +1,5 @@
-import { Icon } from '@/shared/ui';
 import styles from './SearchButton.module.scss';
+import { Button, Icon } from '@/shared/ui';
 import { memo } from 'react';
 
 interface SearchButtonProps {
@@ -9,9 +9,9 @@ interface SearchButtonProps {
 
 const SearchButton = memo(({ onClick, ref }: SearchButtonProps) => {
   return (
-    <button className={styles.button} type="button" onClick={onClick} ref={ref}>
+    <Button className={styles.button} type="button" onClick={onClick} ref={ref}>
       <Icon className={styles.icon} iconId="search" width={24} height={24} />
-    </button>
+    </Button>
   );
 });
 

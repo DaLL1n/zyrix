@@ -25,6 +25,7 @@ const Logo = ({ purpose = 'header', height, width }: LogoProps) => {
         alt="Zyrix"
         priority={isHeader}
         quality={100}
+        loading="eager"
       />
     </Link>
   );

@@ -1,1 +1,1 @@
-export { AuthForm } from './ui/AuthForm';
+export { default as Login } from './ui/AuthMethodToggle/AuthMethodToggle';

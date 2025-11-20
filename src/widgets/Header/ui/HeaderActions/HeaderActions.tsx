@@ -1,7 +1,6 @@
 'use client';
+import { Button, Icon } from '@/shared/ui';
 import { CoinSearchModal, SearchButton } from '@/features/coin-search';
-
-import { Icon } from '@/shared/ui';
 import { useCallback, useRef, useState } from 'react';
 
 const HeaderActions = () => {
@@ -19,9 +18,9 @@ const HeaderActions = () => {
   return (
     <div className="header__actions">
       <SearchButton onClick={handleOpenModal} ref={searchButtonRef} />
-      <button className="header__action-button" type="button">
+      <Button className="header__action-button" type="button">
         <Icon iconId="earth" width={24} height={24} />
-      </button>
+      </Button>
       <CoinSearchModal
         isOpen={isSearchOpen}
         onClose={handleCloseModal}

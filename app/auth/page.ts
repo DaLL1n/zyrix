@@ -1,2 +1,2 @@
-import Auth from '@/_pages/Auth';
+import Auth from '@/_pages/Login';
 export default Auth;

@@ -4,16 +4,10 @@
   position: relative;
   width: 100%;
 
-  svg {
-    position: absolute;
-    top: 50%;
-    right: 24px;
-    width: 24px;
-    height: 24px;
-    color: $sec-TX;
-    pointer-events: none;
-    user-select: none;
-    transform: translateY(-50%);
+  &__label {
+    height: 100%;
+    width: 100%;
+    display: block;
   }
 
   &__field {
@@ -24,8 +18,9 @@
     border: 1px solid transparent;
     border-radius: $radius-4;
     font-size: $fs-16;
-    color: $sec-TX;
-    transition: border-color 0.3s ease-in-out,
+    color: $title;
+    transition:
+      border-color 0.3s ease-in-out,
       padding-left 0.2s cubic-bezier(0, 0, 0.5, 1);
 
     &::placeholder {
@@ -40,10 +35,15 @@
 
   &--search {
     svg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
       left: 24px;
       width: 16px;
       height: 16px;
       color: $text;
+      pointer-events: none;
+      user-select: none;
       transition: opacity 0.2s ease;
     }
 
@@ -51,7 +51,6 @@
       min-height: 40px;
       padding: 8.5px $padding-3 8.5px 48px;
       font-size: $fs-14;
-      color: $title;
 
       &::placeholder {
         color: $text;
@@ -66,6 +65,19 @@
       svg {
         opacity: 0;
       }
+    }
+  }
+
+  &__password-toggle {
+    @include reset-button;
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    transform: translateY(-50%);
+
+    svg {
+      width: 24px;
+      height: 24px;
     }
   }
 }

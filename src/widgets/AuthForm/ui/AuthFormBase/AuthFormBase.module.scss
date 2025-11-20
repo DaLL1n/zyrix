@@ -1,0 +1,46 @@
+@use '../../../../shared//index.scss' as *;
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+  margin-bottom: $space-2;
+
+  &__inputs-group {
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+  }
+
+  &__submit-button {
+    padding: 15px;
+    min-height: 56px;
+    font-size: $fs-16;
+  }
+
+  &__mode-switch {
+    display: flex;
+
+    &-text {
+      font-size: $fs-14;
+      color: $sec-TX;
+      margin-right: $space-1;
+    }
+
+    &-button {
+      transition:
+        color 0.3s ease-in-out,
+        text-decoration 0.3s ease-in-out;
+      max-width: fit-content;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+        color: $primary;
+      }
+    }
+  }
+}

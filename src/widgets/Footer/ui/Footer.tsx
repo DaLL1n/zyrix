@@ -1,4 +1,3 @@
-import React from 'react';
 import { Logo, NavMenu, SocialList } from '@/shared/ui';
 import { socialListItems } from '../model/socialListItems';
 import { navMenuItems } from '../model/navMenuItems';
