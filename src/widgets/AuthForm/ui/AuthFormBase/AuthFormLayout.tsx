@@ -1,18 +1,21 @@
-import styles from './AuthFormBase.module.scss';
+import styles from './AuthFormLayout.module.scss';
 import { Button, Input } from '@/shared/ui';
 import { AUTH_TEXTS } from '../../model/constants';
+import { EmailFields } from '@/features/auth';
 
-interface AuthFormBaseProps {
+interface AuthFormLayoutProps {
   mode: 'login' | 'sign-up';
   onSubmit?: React.FormEventHandler<HTMLFormElement>;
   isLoading?: boolean;
+  children?: React.ReactNode;
 }
 
-const AuthFormBase = ({
+const AuthFormLayout = ({
   mode,
   onSubmit,
   isLoading = false,
-}: AuthFormBaseProps) => {
+  children,
+}: AuthFormLayoutProps) => {
   const { submitButtonText, modePrompt, modeAction } = AUTH_TEXTS[mode];
 
   return (
@@ -20,13 +23,17 @@ const AuthFormBase = ({
       <form className={styles['auth-form']} onSubmit={onSubmit}>
         <fieldset className={styles['auth-form__inputs-group']}>
           <legend className="visually-hidden">Authentication Form</legend>
-          <Input
-            type="email"
-            placeholder="Email Address"
-            disabled={isLoading}
-          />
-          <Input type="password" placeholder="Password" disabled={isLoading} />
+          {children}
+          {mode === 'sign-up' && (
+            <Input
+              type="checkbox"
+              id="terms"
+              label={AUTH_TEXTS[mode].checkboxText}
+              disabled={isLoading}
+            />
+          )}
         </fieldset>
+
         <Button
           className={styles['auth-form__submit-button']}
           type="submit"
@@ -51,4 +58,4 @@ const AuthFormBase = ({
   );
 };
 
-export default AuthFormBase;
+export default AuthFormLayout;

@@ -1,23 +1,25 @@
 'use client';
 import { Logo } from '@/shared/ui';
-import { memo, useState } from 'react';
-import AuthMethodToggle from '@/features/auth/ui/AuthMethodToggle/AuthMethodToggle';
-import AuthFormBase from './AuthFormBase/AuthFormBase';
+import { useState } from 'react';
+import AuthFormLayout from './AuthFormBase/AuthFormLayout';
+import { AuthMethodToggle, EmailFields } from '@/features/auth';
 
 interface AuthFormProps {
   mode: 'login' | 'sign-up';
 }
 
-const AuthForm = memo(({ mode }: AuthFormProps) => {
+const AuthForm = ({ mode }: AuthFormProps) => {
   const [authMethod, setAuthMethod] = useState<'email' | 'phone'>('email');
 
   return (
     <>
       <Logo purpose="auth" width={132} height={60} />
       <AuthMethodToggle authMethod={authMethod} onClick={setAuthMethod} />
-      <AuthFormBase mode={mode} />
+      <AuthFormLayout mode={mode}>
+        {authMethod === 'email' ? <EmailFields /> : null}
+      </AuthFormLayout>
     </>
   );
-});
+};
 
 export default AuthForm;
