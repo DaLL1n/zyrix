@@ -17,6 +17,7 @@ const PasswordToggle = ({
       onClick={onToggle}
       className={className}
       aria-label={visible ? 'Hide password' : 'Show password'}
+      tabIndex={-1}
     >
       <Icon iconId={visible ? 'eye' : 'eye-closed'} width={24} height={24} />
     </button>

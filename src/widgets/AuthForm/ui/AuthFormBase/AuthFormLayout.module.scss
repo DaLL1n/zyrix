@@ -5,6 +5,7 @@
   flex-direction: column;
   gap: $space-5;
   margin-bottom: $space-2;
+  position: relative;
 
   &__inputs-group {
     margin: 0;
@@ -12,7 +13,7 @@
     border: none;
     display: flex;
     flex-direction: column;
-    gap: $space-1;
+    gap: $space-4;
   }
 
   &__submit-button {
@@ -23,6 +24,7 @@
 
   &__mode-switch {
     display: flex;
+    align-items: center;
 
     &-text {
       font-size: $fs-14;
@@ -30,11 +32,12 @@
       margin-right: $space-1;
     }
 
-    &-button {
+    &-link {
       transition:
         color 0.3s ease-in-out,
         text-decoration 0.3s ease-in-out;
       max-width: fit-content;
+      font-size: 16px;
 
       &:hover {
         text-decoration: underline;
@@ -42,5 +45,17 @@
         color: $primary;
       }
     }
+  }
+
+  &__error {
+    color: $error;
+    font-size: $fs-24;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -40px;
+    display: block;
+    width: 100%;
+    text-align: center;
   }
 }

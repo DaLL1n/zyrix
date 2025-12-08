@@ -31,6 +31,13 @@
       outline: none;
       border-color: $primary;
     }
+
+    &:-webkit-autofill {
+      -webkit-text-fill-color: $title;
+      box-shadow: 0 0 0px 1000px $dividers inset;
+      transition: background-color 5000s ease-in-out 0s;
+      border-color: $primary;
+    }
   }
 
   &--search {
@@ -78,6 +85,36 @@
     svg {
       width: 24px;
       height: 24px;
+    }
+  }
+
+  &__error-message {
+    margin-top: 4px;
+    font-size: $fs-14;
+    color: $error;
+    position: absolute;
+    top: 100%;
+    left: 24px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &--error {
+    position: relative;
+
+    .custom-input__error-message {
+      opacity: 1;
+    }
+
+    .custom-input__field {
+      border-color: $error;
+    }
+  }
+
+  &--success {
+    .custom-input__field {
+      border-color: $success;
     }
   }
 }

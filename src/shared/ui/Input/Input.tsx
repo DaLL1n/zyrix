@@ -6,37 +6,24 @@ import Icon from '../Icon/Icon';
 import PasswordToggle from './PasswordToggle';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  type?: 'text' | 'password' | 'email' | 'checkbox' | 'search';
-  placeholder?: string;
-  maxWidth?: string | number;
+  type: 'text' | 'password' | 'email' | 'search';
+  placeholder: string;
   icon?: string;
   label?: string;
+  errorMessage?: string;
 }
 
 const Input = ({
   type = 'text',
   placeholder,
-  maxWidth,
   icon,
   label,
+  errorMessage,
+
   className,
   ...props
 }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
-
-  if (type === 'checkbox') {
-    return (
-      <label className={clsx(styles['custom-checkbox'], className)}>
-        <input type="checkbox" className="visually-hidden" {...props} />
-        <span className={styles['custom-checkbox__box']}>
-          <Icon iconId="check" />
-        </span>
-        {label && (
-          <span className={styles['custom-checkbox__text']}>{label}</span>
-        )}
-      </label>
-    );
-  }
 
   const isSearch = type === 'search';
   const isPassword = type === 'password';
@@ -48,13 +35,18 @@ const Input = ({
         styles['custom-input'],
         {
           [styles['custom-input--search']]: isSearch,
+          [styles['custom-input--error']]: !!errorMessage,
+          [styles['custom-input--success']]: !errorMessage,
         },
         className,
       )}
-      style={{ maxWidth }}
     >
       {icon && isSearch && <Icon iconId={icon} />}
       <label className={styles['custom-input__label']}>
+        <span className={styles['custom-input__error-message']}>
+          {errorMessage}
+        </span>
+
         {label && (
           <span className={styles['custom-input__label-text']}>{label}</span>
         )}
@@ -62,7 +54,7 @@ const Input = ({
           className={styles['custom-input__field']}
           type={inputType}
           placeholder={placeholder}
-          autoComplete={isSearch ? 'off' : 'on'}
+          onBlur={props.onBlur}
           {...props}
         />
       </label>

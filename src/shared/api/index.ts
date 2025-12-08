@@ -1,2 +1,2 @@
 export { getCoin } from './fetchCoin';
-export { getUser } from './fetchUser';
+export { default as supabase } from './supabase';

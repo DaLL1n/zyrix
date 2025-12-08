@@ -1,13 +1,14 @@
 import styles from './AuthFormLayout.module.scss';
-import { Button, Input } from '@/shared/ui';
+import { Button } from '@/shared/ui';
 import { AUTH_TEXTS } from '../../model/constants';
-import { EmailFields } from '@/features/auth';
+import Link from 'next/link';
 
 interface AuthFormLayoutProps {
   mode: 'login' | 'sign-up';
-  onSubmit?: React.FormEventHandler<HTMLFormElement>;
+  onSubmit: React.FormEventHandler<HTMLFormElement>;
   isLoading?: boolean;
   children?: React.ReactNode;
+  authError: Error | string;
 }
 
 const AuthFormLayout = ({
@@ -15,24 +16,22 @@ const AuthFormLayout = ({
   onSubmit,
   isLoading = false,
   children,
+  authError,
 }: AuthFormLayoutProps) => {
-  const { submitButtonText, modePrompt, modeAction } = AUTH_TEXTS[mode];
+  const { submitButtonText, modePrompt, modeAction, authErrorMessage } =
+    AUTH_TEXTS[mode];
+  const isLogin = mode === 'login';
 
   return (
     <>
-      <form className={styles['auth-form']} onSubmit={onSubmit}>
+      <form noValidate className={styles['auth-form']} onSubmit={onSubmit}>
         <fieldset className={styles['auth-form__inputs-group']}>
           <legend className="visually-hidden">Authentication Form</legend>
           {children}
-          {mode === 'sign-up' && (
-            <Input
-              type="checkbox"
-              id="terms"
-              label={AUTH_TEXTS[mode].checkboxText}
-              disabled={isLoading}
-            />
-          )}
         </fieldset>
+        {authError && (
+          <span className={styles['auth-form__error']}>{authErrorMessage}</span>
+        )}
 
         <Button
           className={styles['auth-form__submit-button']}
@@ -47,12 +46,12 @@ const AuthFormLayout = ({
         <span className={styles['auth-form__mode-switch-text']}>
           {modePrompt}
         </span>
-        <Button
-          className={styles['auth-form__mode-switch-button']}
-          href={`/${mode === 'login' ? 'sign-up' : 'login'}`}
+        <Link
+          className={styles['auth-form__mode-switch-link']}
+          href={`/${isLogin ? 'sign-up' : 'login'}`}
         >
           {modeAction}
-        </Button>
+        </Link>
       </div>
     </>
   );
