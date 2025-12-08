@@ -3,7 +3,7 @@ name: Deploy Next.js site to Pages
 on:
   # Запускать автоматически при каждом push в ветку 'main'
   push:
-    branches: ["master"]
+    branches: ['master']
   # Позволяет запускать вручную из вкладки Actions
   workflow_dispatch:
 
@@ -19,17 +19,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20" # Укажите вашу версию Node.js
+          node-version: '20' # Укажите вашу версию Node.js
           cache: 'npm'
 
       - name: Install Dependencies
         run: npm ci # ci - быстрее и надежнее для автоматизации
 
       - name: Build Project
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_KEY }}
         run: npm run build # Запускаем 'next build', который создаст папку 'out'
 
       - name: Upload artifact
