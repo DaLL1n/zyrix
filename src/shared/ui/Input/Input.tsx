@@ -11,15 +11,16 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: string;
   label?: string;
   errorMessage?: string;
+  isValid?: { isDirty: boolean };
 }
 
 const Input = ({
   type = 'text',
-  placeholder,
+  placeholder = '',
   icon,
   label,
   errorMessage,
-
+  isValid,
   className,
   ...props
 }: InputProps) => {
@@ -28,6 +29,7 @@ const Input = ({
   const isSearch = type === 'search';
   const isPassword = type === 'password';
   const inputType = isPassword && showPassword ? 'text' : type;
+  const isSuccess = !errorMessage && isValid?.isDirty;
 
   return (
     <div
@@ -36,7 +38,7 @@ const Input = ({
         {
           [styles['custom-input--search']]: isSearch,
           [styles['custom-input--error']]: !!errorMessage,
-          [styles['custom-input--success']]: !errorMessage,
+          [styles['custom-input--success']]: isSuccess,
         },
         className,
       )}
@@ -54,7 +56,6 @@ const Input = ({
           className={styles['custom-input__field']}
           type={inputType}
           placeholder={placeholder}
-          onBlur={props.onBlur}
           {...props}
         />
       </label>

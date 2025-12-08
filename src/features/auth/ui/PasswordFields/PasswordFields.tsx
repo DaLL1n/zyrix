@@ -8,6 +8,7 @@ interface PasswordFieldsProps {
     password?: string;
     confirmPassword?: string;
   };
+  fieldState?: (name: 'password' | 'confirmPassword') => any;
 }
 
 const PasswordFields = ({
@@ -15,6 +16,7 @@ const PasswordFields = ({
   isLoading,
   register,
   errorMessages,
+  fieldState,
 }: PasswordFieldsProps) => {
   const isSignUp = mode === 'sign-up';
   return (
@@ -22,18 +24,22 @@ const PasswordFields = ({
       <Input
         type="password"
         placeholder="Password"
-        disabled={isLoading}
+        // disabled={isLoading}
         errorMessage={errorMessages?.password}
         autoComplete="new-password"
+        suppressHydrationWarning={true}
+        isValid={fieldState?.('password')}
         {...register?.('password')}
       />
       {isSignUp && (
         <Input
           type="password"
           placeholder="Confirm Password"
-          disabled={isLoading}
+          // disabled={isLoading}
           autoComplete="new-password"
+          suppressHydrationWarning={true}
           errorMessage={errorMessages?.confirmPassword}
+          isValid={fieldState?.('confirmPassword')}
           {...register?.('confirmPassword')}
         />
       )}

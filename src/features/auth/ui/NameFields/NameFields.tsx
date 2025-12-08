@@ -7,12 +7,14 @@ interface NameFieldsProps {
     name?: string;
     surname?: string;
   };
+  fieldState?: (name: 'name' | 'surname') => any;
 }
 
 const NameFields = ({
   register,
   isLoading = false,
   errorMessages,
+  fieldState,
 }: NameFieldsProps) => {
   return (
     <>
@@ -22,6 +24,7 @@ const NameFields = ({
         errorMessage={errorMessages?.name}
         autoComplete="given-name"
         autoCapitalize="on"
+        isValid={fieldState?.('name')}
         {...register('name')}
       />
       <Input
@@ -30,6 +33,7 @@ const NameFields = ({
         errorMessage={errorMessages?.surname}
         autoComplete="family-name"
         autoCapitalize="on"
+        isValid={fieldState?.('surname')}
         {...register('surname')}
       />
     </>

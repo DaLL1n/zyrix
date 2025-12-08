@@ -10,7 +10,7 @@ const useAuthForm = <T extends Record<string, any> = Record<string, any>>(
   const methods = useForm<T>({
     resolver: zodResolver(schemas) as any,
     mode: 'onChange',
-    reValidateMode: 'onBlur',
+    reValidateMode: 'onChange',
   });
 
   return methods;

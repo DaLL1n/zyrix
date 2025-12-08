@@ -35,6 +35,7 @@ const AuthForm = memo(({ mode }: AuthFormProps) => {
     handleSubmit,
     register,
     formState: { errors },
+    getFieldState,
   } = methods;
 
   const isSignUp = mode === 'sign-up';
@@ -42,22 +43,23 @@ const AuthForm = memo(({ mode }: AuthFormProps) => {
   const isPhone = authMethod === 'phone';
 
   const errorsFields = mapAuthErrors(errors);
-
+  console.log(getFieldState('password'));
   const authError = isError ? error : '';
-
+  // console.log(getValues().email, getValues().password);
   return (
     <>
       <Logo purpose="auth" width={132} height={60} />
       <AuthMethodToggle authMethod={authMethod} onClick={setAuthMethod} />
       <AuthFormLayout
         mode={mode}
-        onSubmit={handleSubmit((data) => onSubmit(data))}
+        onSubmit={handleSubmit(onSubmit)}
         authError={authError}
       >
         {isSignUp && (
           <NameFields
             register={register}
             errorMessages={errorsFields.initials}
+            fieldState={getFieldState}
           />
         )}
         {isEmail && (
@@ -66,6 +68,7 @@ const AuthForm = memo(({ mode }: AuthFormProps) => {
             placeholder="Email Address"
             errorMessage={errorsFields.email}
             autoComplete="email"
+            isValid={getFieldState('email')}
             {...register('email')}
           />
         )}
@@ -74,6 +77,7 @@ const AuthForm = memo(({ mode }: AuthFormProps) => {
           mode={mode}
           register={register}
           errorMessages={errorsFields.password}
+          fieldState={getFieldState}
         />
         {isSignUp && (
           <Checkbox
