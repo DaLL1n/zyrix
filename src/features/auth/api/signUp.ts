@@ -7,7 +7,8 @@ const signUp = async ({ formData }: { formData: SignUp }) => {
     password: formData.password,
     options: {
       data: {
-        ...formData,
+        name: formData.name,
+        surname: formData.surname,
       },
     },
   });

@@ -11,7 +11,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: string;
   label?: string;
   errorMessage?: string;
-  isValid?: { isDirty: boolean };
+  isValid?: boolean;
 }
 
 const Input = ({
@@ -22,6 +22,7 @@ const Input = ({
   errorMessage,
   isValid,
   className,
+
   ...props
 }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -29,7 +30,7 @@ const Input = ({
   const isSearch = type === 'search';
   const isPassword = type === 'password';
   const inputType = isPassword && showPassword ? 'text' : type;
-  const isSuccess = !errorMessage && isValid?.isDirty;
+  const isSuccess = !errorMessage && isValid;
 
   return (
     <div

@@ -38,6 +38,10 @@
       transition: background-color 5000s ease-in-out 0s;
       border-color: $primary;
     }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 
   &--search {

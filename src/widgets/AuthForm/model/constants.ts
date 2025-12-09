@@ -10,5 +10,7 @@ export const AUTH_TEXTS = {
     modePrompt: 'Already have an account?',
     modeAction: 'Log in',
     authErrorMessage: 'User with this email address is already registered',
+    'terms-label':
+      'By creating an account, I agree to Zyrix’s Terms and Privacy Policy',
   },
 } as const;

@@ -1,4 +1,5 @@
 import { Input } from '@/shared/ui';
+import type { UseFormGetFieldState } from 'react-hook-form';
 
 interface PasswordFieldsProps {
   mode: 'login' | 'sign-up';
@@ -8,7 +9,7 @@ interface PasswordFieldsProps {
     password?: string;
     confirmPassword?: string;
   };
-  fieldState?: (name: 'password' | 'confirmPassword') => any;
+  watch?: (name: 'password' | 'confirmPassword') => any;
 }
 
 const PasswordFields = ({
@@ -16,7 +17,7 @@ const PasswordFields = ({
   isLoading,
   register,
   errorMessages,
-  fieldState,
+  watch,
 }: PasswordFieldsProps) => {
   const isSignUp = mode === 'sign-up';
   return (
@@ -24,22 +25,22 @@ const PasswordFields = ({
       <Input
         type="password"
         placeholder="Password"
-        // disabled={isLoading}
+        disabled={isLoading}
         errorMessage={errorMessages?.password}
         autoComplete="new-password"
         suppressHydrationWarning={true}
-        isValid={fieldState?.('password')}
+        isValid={watch?.('password')?.length > 0}
         {...register?.('password')}
       />
       {isSignUp && (
         <Input
           type="password"
           placeholder="Confirm Password"
-          // disabled={isLoading}
+          disabled={isLoading}
           autoComplete="new-password"
           suppressHydrationWarning={true}
           errorMessage={errorMessages?.confirmPassword}
-          isValid={fieldState?.('confirmPassword')}
+          isValid={watch?.('confirmPassword')?.length > 0}
           {...register?.('confirmPassword')}
         />
       )}

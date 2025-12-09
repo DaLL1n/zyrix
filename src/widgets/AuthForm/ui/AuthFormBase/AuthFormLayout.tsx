@@ -9,6 +9,7 @@ interface AuthFormLayoutProps {
   isLoading?: boolean;
   children?: React.ReactNode;
   authError: Error | string;
+  isErrorFields?: boolean;
 }
 
 const AuthFormLayout = ({
@@ -17,10 +18,12 @@ const AuthFormLayout = ({
   isLoading = false,
   children,
   authError,
+  isErrorFields = false,
 }: AuthFormLayoutProps) => {
   const { submitButtonText, modePrompt, modeAction, authErrorMessage } =
     AUTH_TEXTS[mode];
   const isLogin = mode === 'login';
+  const isDisabledButton = isLoading || !isErrorFields;
 
   return (
     <>
@@ -37,7 +40,7 @@ const AuthFormLayout = ({
           className={styles['auth-form__submit-button']}
           type="submit"
           variant="primary"
-          disabled={isLoading}
+          disabled={isDisabledButton}
         >
           {submitButtonText}
         </Button>

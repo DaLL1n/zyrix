@@ -7,6 +7,11 @@
   font-size: $fs-14;
   width: 100%;
 
+  &:disabled {
+    cursor: not-allowed;
+    background-color: $primary-S2;
+  }
+
   &--primary {
     background-color: $primary;
     color: $primary-BC;

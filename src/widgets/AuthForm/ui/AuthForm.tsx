@@ -1,6 +1,6 @@
 'use client';
 import { Checkbox, Input, Logo } from '@/shared/ui';
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import AuthFormLayout from './AuthFormBase/AuthFormLayout';
 import {
   AuthMethodToggle,
@@ -12,6 +12,8 @@ import {
   type SignUp,
 } from '@/features/auth';
 import { capitalize } from '@/shared/lib';
+import { AUTH_TEXTS } from '../model/constants';
+import { useRouter } from 'next/navigation';
 
 interface AuthFormProps {
   mode: 'login' | 'sign-up';
@@ -20,32 +22,42 @@ interface AuthFormProps {
 const AuthForm = memo(({ mode }: AuthFormProps) => {
   const [authMethod, setAuthMethod] = useState<'email' | 'phone'>('email');
   const methods = useAuthForm<SignUp>(mode);
-  const { mutate, error, isError } = useAuth(mode);
+  const { mutate, error, isError, isPending, isSuccess } = useAuth(mode);
+  const router = useRouter();
 
   const onSubmit = (data: SignUp) => {
+    const { terms, confirmPassword, ...rest } = data;
     const formatted = {
-      ...data,
+      ...rest,
       name: capitalize(data.name),
       surname: capitalize(data.surname),
     };
     mutate(formatted);
   };
 
+  useEffect(() => {
+    if (isSuccess) {
+      if (mode === 'login') {
+        router.push('/market');
+      } else {
+        router.push('/login');
+      }
+    }
+  }, [isSuccess]);
+
   const {
     handleSubmit,
     register,
-    formState: { errors },
-    getFieldState,
+    formState: { errors, isValid },
+    watch,
   } = methods;
 
   const isSignUp = mode === 'sign-up';
   const isEmail = authMethod === 'email';
-  const isPhone = authMethod === 'phone';
 
   const errorsFields = mapAuthErrors(errors);
-  console.log(getFieldState('password'));
   const authError = isError ? error : '';
-  // console.log(getValues().email, getValues().password);
+
   return (
     <>
       <Logo purpose="auth" width={132} height={60} />
@@ -54,12 +66,15 @@ const AuthForm = memo(({ mode }: AuthFormProps) => {
         mode={mode}
         onSubmit={handleSubmit(onSubmit)}
         authError={authError}
+        isErrorFields={isValid}
+        isLoading={isPending}
       >
         {isSignUp && (
           <NameFields
             register={register}
             errorMessages={errorsFields.initials}
-            fieldState={getFieldState}
+            watch={watch}
+            isLoading={isPending}
           />
         )}
         {isEmail && (
@@ -68,7 +83,8 @@ const AuthForm = memo(({ mode }: AuthFormProps) => {
             placeholder="Email Address"
             errorMessage={errorsFields.email}
             autoComplete="email"
-            isValid={getFieldState('email')}
+            isValid={watch?.('email')?.length > 0}
+            disabled={isPending}
             {...register('email')}
           />
         )}
@@ -77,11 +93,12 @@ const AuthForm = memo(({ mode }: AuthFormProps) => {
           mode={mode}
           register={register}
           errorMessages={errorsFields.password}
-          fieldState={getFieldState}
+          watch={watch}
+          isLoading={isPending}
         />
         {isSignUp && (
           <Checkbox
-            label="By creating an account, I agree to Zyrix’s Terms and Privacy Policy"
+            label={AUTH_TEXTS['sign-up']['terms-label']}
             register={register}
             errorMessage={errorsFields.terms}
           />
